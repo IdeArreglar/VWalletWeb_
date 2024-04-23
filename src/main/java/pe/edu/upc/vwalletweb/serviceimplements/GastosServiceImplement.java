@@ -2,6 +2,7 @@ package pe.edu.upc.vwalletweb.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.vwalletweb.entities.Gastos;
 import pe.edu.upc.vwalletweb.repositories.IGastosRepository;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IGastosService;
 
@@ -9,4 +10,9 @@ import pe.edu.upc.vwalletweb.serviceinterfaces.IGastosService;
 public class GastosServiceImplement implements IGastosService {
     @Autowired
     private IGastosRepository gR;
+
+    @Override
+    public void insert(Gastos gastos) {
+
+    }
 }
