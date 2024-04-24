@@ -37,6 +37,11 @@ public class ServiciosController {
         }).collect(Collectors.toList());
     }
 
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        sS.delete(id);
+    }
+
     @GetMapping("/buscarestado")
     @PreAuthorize("hasAuthority('ESTUDIANTE')")
     public List<ServiciosDTO> buscar(@RequestParam String est) {
