@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 @Entity
-@Table(name = "Reservas")
+@Table(name = "reservas")
 public class Reservas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,10 +12,10 @@ public class Reservas {
     @Column(name = "fechaReserva", nullable = false)
     private LocalDate fechaReserva;
     @ManyToOne
-    @JoinColumn(name = "usuarioID")
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     @ManyToOne
-    @JoinColumn(name = "serviciosID")
+    @JoinColumn(name = "servicios_id")
     private Servicios servicios;
 
     public Reservas() {

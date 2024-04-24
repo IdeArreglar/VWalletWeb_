@@ -2,8 +2,8 @@ package pe.edu.upc.vwalletweb.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pe.edu.upc.vwalletweb.entities.Gastos;
+import pe.edu.upc.vwalletweb.entities.RecargaSaldo;
 
 @Repository
-public interface IGastosRepository extends JpaRepository<Gastos,Integer> {
+public interface IRecargaSaldoRepository extends JpaRepository<RecargaSaldo,Integer> {
 }

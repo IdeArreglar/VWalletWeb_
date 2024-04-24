@@ -9,8 +9,7 @@ import pe.edu.upc.vwalletweb.serviceinterfaces.IServiciosService;
 import java.util.List;
 
 @Service
-public class ServiciosImplement implements IServiciosService  {
-
+public class ServiciosServiceImplement implements IServiciosService {
     @Autowired
     private IServiciosRepository sR;
 
@@ -33,6 +32,4 @@ public class ServiciosImplement implements IServiciosService  {
     public List<Servicios> buscarEstado(String estados) {
         return sR.buscarEstado(estados);
     }
-
-
 }
