@@ -18,22 +18,22 @@ public class ServiciosController {
     private IServiciosService sS;
 
     @PostMapping
-    public void registrar(@RequestBody ServiciosDTO dtoM) {
-        ModelMapper d = new ModelMapper();
-        Servicios movie = d.map(dtoM, Servicios.class);
-        sS.insert(movie);
+    public void registrar(@RequestBody ServiciosDTO serviciosDTO) {
+        ModelMapper r = new ModelMapper();
+        Servicios servicios = r.map(serviciosDTO, Servicios.class);
+        sS.insert(servicios);
     }
     @PutMapping()
-    public void modificar(@RequestBody ServiciosDTO dto){
-        ModelMapper m=new ModelMapper();
-        Servicios mo=m.map(dto,Servicios.class);
-        sS.insert(mo);
+    public void modificar(@RequestBody ServiciosDTO serviDTO){
+        ModelMapper m = new ModelMapper();
+        Servicios servi = m.map(serviDTO,Servicios.class);
+        sS.insert(servi);
     }
     @GetMapping
     public List<ServiciosDTO> list() {
         return sS.list().stream().map(y -> {
-            ModelMapper c = new ModelMapper();
-            return c.map(y, ServiciosDTO.class);
+            ModelMapper l = new ModelMapper();
+            return l.map(y, ServiciosDTO.class);
         }).collect(Collectors.toList());
     }
 

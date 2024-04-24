@@ -1,4 +1,4 @@
 package pe.edu.upc.vwalletweb.serviceinterfaces;
 
-public interface IReservaService {
+public interface IReservasService {
 }

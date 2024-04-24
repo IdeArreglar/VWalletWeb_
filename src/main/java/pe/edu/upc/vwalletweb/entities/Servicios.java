@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Servicios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idServicio;
+    private int idServicios;
     @Column(name = "nombreServicio",nullable = false,length = 100)
     private String nombreServicio;
     @Column(name = "estado",nullable = false,length = 100)
@@ -16,18 +16,18 @@ public class Servicios {
     public Servicios() {
     }
 
-    public Servicios(int idServicio, String nombreServicio, String estado) {
-        this.idServicio = idServicio;
+    public Servicios(int idServicios, String nombreServicio, String estado) {
+        this.idServicios = idServicios;
         this.nombreServicio = nombreServicio;
         this.estado = estado;
     }
 
-    public int getIdServicio() {
-        return idServicio;
+    public int getIdServicios() {
+        return idServicios;
     }
 
-    public void setIdServicio(int idServicio) {
-        this.idServicio = idServicio;
+    public void setIdServicios(int idServicios) {
+        this.idServicios = idServicios;
     }
 
     public String getNombreServicio() {
