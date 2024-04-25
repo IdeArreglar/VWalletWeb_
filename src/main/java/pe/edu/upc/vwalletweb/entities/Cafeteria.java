@@ -12,7 +12,7 @@ public class Cafeteria {
     @Column(name = "sedeCafeteria",nullable = false,length = 100)
     private String sedeCafeteria;
     @ManyToOne
-    @JoinColumn(name = "servicios_id")
+    @JoinColumn(name = "id_servicio")
     private Servicios servicios;
 
     public Cafeteria() {
