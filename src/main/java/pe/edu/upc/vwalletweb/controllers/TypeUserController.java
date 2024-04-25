@@ -1,5 +1,6 @@
 package pe.edu.upc.vwalletweb.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +13,8 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/typeUsers")
+@RequiredArgsConstructor
 public class TypeUserController {
-    @Autowired
     private ITypeUserService tS;
 
     @PostMapping
