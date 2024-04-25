@@ -14,21 +14,24 @@ public class Menu {
     private String platoPrincipal;
     @Column(name = "postre",nullable = false,length = 100)
     private String postre;
+    @Column(name = "refresco",nullable = false,length = 100)
+    private String refresco;
     @Column(name = "precioMenu",nullable = false)
     private float precioMenu;
 
     @ManyToOne
-    @JoinColumn(name = "cafeteria_servicios_servicios_id")
+    @JoinColumn(name = "cafeteria_id")
     private Cafeteria cafeteria;
 
     public Menu() {
     }
 
-    public Menu(int idMenu, String entrada, String platoPrincipal, String postre, float precioMenu, Cafeteria cafeteria) {
+    public Menu(int idMenu, String entrada, String platoPrincipal, String postre, String refresco, float precioMenu, Cafeteria cafeteria) {
         this.idMenu = idMenu;
         this.entrada = entrada;
         this.platoPrincipal = platoPrincipal;
         this.postre = postre;
+        this.refresco = refresco;
         this.precioMenu = precioMenu;
         this.cafeteria = cafeteria;
     }
@@ -63,6 +66,14 @@ public class Menu {
 
     public void setPostre(String postre) {
         this.postre = postre;
+    }
+
+    public String getRefresco() {
+        return refresco;
+    }
+
+    public void setRefresco(String refresco) {
+        this.refresco = refresco;
     }
 
     public float getPrecioMenu() {

@@ -7,29 +7,29 @@ import jakarta.persistence.*;
 @Table(name = "cafeteria")
 public class Cafeteria {
     @Id
-    @Column(name="servicios_id")
-    private int idServicios;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idCafeteria;
     @Column(name = "sedeCafeteria",nullable = false,length = 100)
     private String sedeCafeteria;
-    @OneToOne
-    @MapsId
+    @ManyToOne
+    @JoinColumn(name = "servicios_id")
     private Servicios servicios;
 
     public Cafeteria() {
     }
 
-    public Cafeteria(int idServicios, String sedeCafeteria, Servicios servicios) {
-        this.idServicios = idServicios;
+    public Cafeteria(int idCafeteria, String sedeCafeteria, Servicios servicios) {
+        this.idCafeteria = idCafeteria;
         this.sedeCafeteria = sedeCafeteria;
         this.servicios = servicios;
     }
 
-    public int getIdServicios() {
-        return idServicios;
+    public int getIdCafeteria() {
+        return idCafeteria;
     }
 
-    public void setIdServicios(int idServicios) {
-        this.idServicios = idServicios;
+    public void setIdCafeteria(int idCafeteria) {
+        this.idCafeteria = idCafeteria;
     }
 
     public String getSedeCafeteria() {
