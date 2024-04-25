@@ -1,5 +1,6 @@
 package pe.edu.upc.vwalletweb.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,12 +20,10 @@ import pe.edu.upc.vwalletweb.serviceimplements.JwtUserDetailsService;
 //Clase 3
 @RestController
 @CrossOrigin
+@RequiredArgsConstructor
 public class JwtAuthenticationController {
-    @Autowired
     private AuthenticationManager authenticationManager;
-    @Autowired
     private JwtTokenUtil jwtTokenUtil;
-    @Autowired
     private JwtUserDetailsService userDetailsService;
 
 
