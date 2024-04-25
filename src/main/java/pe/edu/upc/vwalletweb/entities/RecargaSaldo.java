@@ -9,22 +9,23 @@ import java.time.LocalDate;
 public class RecargaSaldo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_recarga_saldo")
     private int idRecargaSaldo;
-    @Column(name = "montoRecarga", nullable = false)
-    private float montoRecarga;
-    @Column(name = "fechaRecarga", nullable = false)
-    private LocalDate fechaRecarga;
+    @Column(name = "monto", nullable = false)
+    private float monto;
+    @Column(name = "fecha", nullable = false)
+    private LocalDate fecha;
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     public RecargaSaldo() {
     }
 
-    public RecargaSaldo(int idRecargaSaldo, float montoRecarga, LocalDate fechaRecarga, Usuario usuario) {
+    public RecargaSaldo(int idRecargaSaldo, float monto, LocalDate fecha, Usuario usuario) {
         this.idRecargaSaldo = idRecargaSaldo;
-        this.montoRecarga = montoRecarga;
-        this.fechaRecarga = fechaRecarga;
+        this.monto = monto;
+        this.fecha = fecha;
         this.usuario = usuario;
     }
 
@@ -36,20 +37,20 @@ public class RecargaSaldo {
         this.idRecargaSaldo = idRecargaSaldo;
     }
 
-    public float getMontoRecarga() {
-        return montoRecarga;
+    public float getMonto() {
+        return monto;
     }
 
-    public void setMontoRecarga(float montoRecarga) {
-        this.montoRecarga = montoRecarga;
+    public void setMonto(float monto) {
+        this.monto = monto;
     }
 
-    public LocalDate getFechaRecarga() {
-        return fechaRecarga;
+    public LocalDate getFecha() {
+        return fecha;
     }
 
-    public void setFechaRecarga(LocalDate fechaRecarga) {
-        this.fechaRecarga = fechaRecarga;
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
     public Usuario getUsuario() {

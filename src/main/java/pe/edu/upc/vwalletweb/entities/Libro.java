@@ -9,17 +9,18 @@ import java.time.LocalDate;
 public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_libro")
     private int idLibro;
     @Column(name = "titulo",nullable = false,length = 100)
     private String titulo;
     @Column(name = "autor",nullable = false,length = 100)
     private String autor;
-    @Column(name = "anioPublicacion",nullable = false)
+    @Column(name = "anio_publicacion",nullable = false)
     private LocalDate anioPublicacion;
     @Column(name = "genero",nullable = false,length = 100)
     private String genero;
     @ManyToOne
-    @JoinColumn(name = "biblioteca_id")
+    @JoinColumn(name = "id_biblioteca")
     private Biblioteca biblioteca;
 
     public Libro() {

@@ -9,19 +9,19 @@ public class DetalleReservas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idDetalleReserva;
     @ManyToOne
-    @JoinColumn(name = "reservas_id")
+    @JoinColumn(name = "id_reserva")
     private Reservas reservas;
     @ManyToOne
-    @JoinColumn(name = "menu_id")
+    @JoinColumn(name = "id_menu")
     private Menu menu;
     @ManyToOne
-    @JoinColumn(name = "transporte_id")
+    @JoinColumn(name = "id_transporte")
     private Transporte transporte;
     @ManyToOne
-    @JoinColumn(name = "libro_id")
+    @JoinColumn(name = "id_libro")
     private Libro libro;
 
-    @Column(name = "subtotalReserva", nullable = false)
+    @Column(name = "subtotal", nullable = false)
     private float subtotalReserva;
 
 

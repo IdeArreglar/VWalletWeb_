@@ -8,9 +8,10 @@ import jakarta.persistence.*;
 public class Cafeteria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cafeteria")
     private int idCafeteria;
-    @Column(name = "sedeCafeteria",nullable = false,length = 100)
-    private String sedeCafeteria;
+    @Column(name = "sede", nullable = false, length = 100)
+    private String sede;
     @ManyToOne
     @JoinColumn(name = "id_servicio")
     private Servicios servicios;
@@ -18,9 +19,9 @@ public class Cafeteria {
     public Cafeteria() {
     }
 
-    public Cafeteria(int idCafeteria, String sedeCafeteria, Servicios servicios) {
+    public Cafeteria(int idCafeteria, String sede, Servicios servicios) {
         this.idCafeteria = idCafeteria;
-        this.sedeCafeteria = sedeCafeteria;
+        this.sede = sede;
         this.servicios = servicios;
     }
 
@@ -32,12 +33,12 @@ public class Cafeteria {
         this.idCafeteria = idCafeteria;
     }
 
-    public String getSedeCafeteria() {
-        return sedeCafeteria;
+    public String getSede() {
+        return sede;
     }
 
-    public void setSedeCafeteria(String sedeCafeteria) {
-        this.sedeCafeteria = sedeCafeteria;
+    public void setSede(String sede) {
+        this.sede = sede;
     }
 
     public Servicios getServicios() {

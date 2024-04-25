@@ -1,10 +1,8 @@
 package pe.edu.upc.vwalletweb.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -13,20 +11,20 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Long idUsuario;
 
-    @Column(length = 30, unique = true)
+    @Column(name = "username", length = 30, unique = true)
     private String nameUsuario;
-    @Column(length = 200)
+    @Column(name = "password", length = 200)
     private String passwordUsuario;
-
-    @Column(length = 200)
+    @Column(name = "email", length = 200)
     private String emailUsuario;
-
+    @Column(name = "enabled")
     private Boolean enabledUsuario;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "id_usuario")
     private List<TypeUser> typeUsers;
 
     public Usuario() {

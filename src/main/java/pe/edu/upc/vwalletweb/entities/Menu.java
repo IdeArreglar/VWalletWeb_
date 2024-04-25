@@ -3,36 +3,37 @@ package pe.edu.upc.vwalletweb.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="menu")
+@Table(name = "menu")
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_menu")
     private int idMenu;
-    @Column(name = "entrada",nullable = false,length = 100)
+    @Column(name = "entrada", nullable = false, length = 100)
     private String entrada;
-    @Column(name = "platoPrincipal",nullable = false,length = 100)
+    @Column(name = "plato_principal", nullable = false, length = 100)
     private String platoPrincipal;
-    @Column(name = "postre",nullable = false,length = 100)
+    @Column(name = "postre", nullable = false, length = 100)
     private String postre;
-    @Column(name = "refresco",nullable = false,length = 100)
+    @Column(name = "refresco", nullable = false, length = 100)
     private String refresco;
-    @Column(name = "precioMenu",nullable = false)
-    private float precioMenu;
+    @Column(name = "precio", nullable = false)
+    private float precio;
 
     @ManyToOne
-    @JoinColumn(name = "cafeteria_id")
+    @JoinColumn(name = "id_cafeteria")
     private Cafeteria cafeteria;
 
     public Menu() {
     }
 
-    public Menu(int idMenu, String entrada, String platoPrincipal, String postre, String refresco, float precioMenu, Cafeteria cafeteria) {
+    public Menu(int idMenu, String entrada, String platoPrincipal, String postre, String refresco, float precio, Cafeteria cafeteria) {
         this.idMenu = idMenu;
         this.entrada = entrada;
         this.platoPrincipal = platoPrincipal;
         this.postre = postre;
         this.refresco = refresco;
-        this.precioMenu = precioMenu;
+        this.precio = precio;
         this.cafeteria = cafeteria;
     }
 
@@ -76,12 +77,12 @@ public class Menu {
         this.refresco = refresco;
     }
 
-    public float getPrecioMenu() {
-        return precioMenu;
+    public float getPrecio() {
+        return precio;
     }
 
-    public void setPrecioMenu(float precioMenu) {
-        this.precioMenu = precioMenu;
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
     public Cafeteria getCafeteria() {

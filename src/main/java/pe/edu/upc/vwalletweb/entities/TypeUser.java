@@ -5,37 +5,39 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "typeUsers", uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario_id", "typeTypeUser"})})
+@Table(name = "typeUsers", uniqueConstraints = {@UniqueConstraint(columnNames = {"id_usuario", "tipo"})})
 public class TypeUser implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTyperUser;
+    @Column(name = "id_type_user")
+    private Long idTypeUser;
 
-    private String typeTypeUser;
+    @Column(name = "tipo", length = 100)
+    private String tipo;
 
     @ManyToOne()
-    @JoinColumn(name = "usuario_id", nullable = false)
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
     public TypeUser() {
     }
 
-    public Long getIdTyperUser() {
-        return idTyperUser;
+    public Long getIdTypeUser() {
+        return idTypeUser;
     }
 
-    public void setIdTyperUser(Long idTyperUser) {
-        this.idTyperUser = idTyperUser;
+    public void setIdTypeUser(Long idTypeUser) {
+        this.idTypeUser = idTypeUser;
     }
 
-    public String getTypeTypeUser() {
-        return typeTypeUser;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTypeTypeUser(String typeTypeUser) {
-        this.typeTypeUser = typeTypeUser;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public Usuario getUsuario() {

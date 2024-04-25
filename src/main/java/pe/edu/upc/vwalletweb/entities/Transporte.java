@@ -9,31 +9,32 @@ import java.time.LocalDate;
 public class Transporte {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_transporte")
     private int idTransporte;
-    @Column(name = "universidadSalida",nullable = false,length = 100)
+    @Column(name = "universidad_salida", nullable = false, length = 100)
     private String universidadSalida;
-    @Column(name = "universidadLlegada",nullable = false,length = 100)
+    @Column(name = "universidad_llegada", nullable = false, length = 100)
     private String universidadLlegada;
-    @Column(name = "horaSalida",nullable = false)
+    @Column(name = "hora_salida", nullable = false)
     private LocalDate horaSalida;
-    @Column(name = "horaLlegada",nullable = false)
+    @Column(name = "hora_llegada", nullable = false)
     private LocalDate horaLlegada;
-    @Column(name = "precioTransporte",nullable = false)
-    private float precioTransporte;
+    @Column(name = "precio", nullable = false)
+    private float precio;
     @ManyToOne
-    @JoinColumn(name = "servicios_id")
+    @JoinColumn(name = "id_servicio")
     private Servicios servicios;
 
     public Transporte() {
     }
 
-    public Transporte(int idTransporte, String universidadSalida, String universidadLlegada, LocalDate horaSalida, LocalDate horaLlegada, float precioTransporte, Servicios servicios) {
+    public Transporte(int idTransporte, String universidadSalida, String universidadLlegada, LocalDate horaSalida, LocalDate horaLlegada, float precio, Servicios servicios) {
         this.idTransporte = idTransporte;
         this.universidadSalida = universidadSalida;
         this.universidadLlegada = universidadLlegada;
         this.horaSalida = horaSalida;
         this.horaLlegada = horaLlegada;
-        this.precioTransporte = precioTransporte;
+        this.precio = precio;
         this.servicios = servicios;
     }
 
@@ -77,12 +78,12 @@ public class Transporte {
         this.horaLlegada = horaLlegada;
     }
 
-    public float getPrecioTransporte() {
-        return precioTransporte;
+    public float getPrecio() {
+        return precio;
     }
 
-    public void setPrecioTransporte(float precioTransporte) {
-        this.precioTransporte = precioTransporte;
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
     public Servicios getServicios() {

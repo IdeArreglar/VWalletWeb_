@@ -7,19 +7,20 @@ import jakarta.persistence.*;
 public class Biblioteca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_biblioteca")
     private int idBiblioteca;
-    @Column(name = "sedeBiblioteca",nullable = false,length = 100)
-    private String sedeBiblioteca;
+    @Column(name = "sede", nullable = false, length = 100)
+    private String sede;
     @ManyToOne
-    @JoinColumn(name = "servicios_id")
+    @JoinColumn(name = "id_servicio")
     private Servicios servicios;
 
     public Biblioteca() {
     }
 
-    public Biblioteca(int idBiblioteca, String sedeBiblioteca, Servicios servicios) {
+    public Biblioteca(int idBiblioteca, String sede, Servicios servicios) {
         this.idBiblioteca = idBiblioteca;
-        this.sedeBiblioteca = sedeBiblioteca;
+        this.sede = sede;
         this.servicios = servicios;
     }
 
@@ -31,12 +32,12 @@ public class Biblioteca {
         this.idBiblioteca = idBiblioteca;
     }
 
-    public String getSedeBiblioteca() {
-        return sedeBiblioteca;
+    public String getSede() {
+        return sede;
     }
 
-    public void setSedeBiblioteca(String sedeBiblioteca) {
-        this.sedeBiblioteca = sedeBiblioteca;
+    public void setSede(String sede) {
+        this.sede = sede;
     }
 
     public Servicios getServicios() {

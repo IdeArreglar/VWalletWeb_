@@ -35,14 +35,14 @@ public class JwtUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String nameUsuario) throws UsernameNotFoundException {
         Usuario usuario = repo.findByNameUsuario(nameUsuario);
 
-        if(usuario == null) {
+        if (usuario == null) {
             throw new UsernameNotFoundException(String.format("User not exists", nameUsuario));
         }
 
         List<GrantedAuthority> typeUsers = new ArrayList<>();
 
         usuario.getTypeUsers().forEach(rol -> {
-            typeUsers.add(new SimpleGrantedAuthority(rol.getTypeTypeUser()));
+            typeUsers.add(new SimpleGrantedAuthority(rol.getTipo()));
         });
         //Solo si es enabled:true--> es considerado valido y nos genera el token en otro caso no
         UserDetails ud = new org.springframework.security.core.userdetails.User(usuario.getNameUsuario(), usuario.getPasswordUsuario(), usuario.getEnabledUsuario(), true, true, true, typeUsers);
