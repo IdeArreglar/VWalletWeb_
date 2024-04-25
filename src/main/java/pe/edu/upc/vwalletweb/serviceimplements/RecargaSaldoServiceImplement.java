@@ -22,7 +22,6 @@ public class RecargaSaldoServiceImplement implements IRecargaSalgoService {
         return rsR.findAll();
     }
 
-
     @Override
     public void delete(int idRecargaSaldo) {
         rsR.deleteById(idRecargaSaldo);

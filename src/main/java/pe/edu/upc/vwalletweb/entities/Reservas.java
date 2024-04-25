@@ -11,6 +11,8 @@ public class Reservas {
     private int idReservas;
     @Column(name = "fechaReserva", nullable = false)
     private LocalDate fechaReserva;
+    @Column(name = "totalReserva", nullable = false)
+    private float totalReserva;
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
@@ -18,9 +20,10 @@ public class Reservas {
     public Reservas() {
     }
 
-    public Reservas(int idReservas, LocalDate fechaReserva, Usuario usuario, Servicios servicios) {
+    public Reservas(int idReservas, LocalDate fechaReserva, float totalReserva, Usuario usuario) {
         this.idReservas = idReservas;
         this.fechaReserva = fechaReserva;
+        this.totalReserva = totalReserva;
         this.usuario = usuario;
     }
 
@@ -40,6 +43,14 @@ public class Reservas {
         this.fechaReserva = fechaReserva;
     }
 
+    public float getTotalReserva() {
+        return totalReserva;
+    }
+
+    public void setTotalReserva(float totalReserva) {
+        this.totalReserva = totalReserva;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -47,5 +58,4 @@ public class Reservas {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
 }

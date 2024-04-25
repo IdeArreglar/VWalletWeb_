@@ -1,40 +1,23 @@
-package pe.edu.upc.vwalletweb.entities;
+package pe.edu.upc.vwalletweb.dtos;
 
-import jakarta.persistence.*;
 
-@Entity
-@Table(name = "detallereservas")
-public class DetalleReservas {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+import pe.edu.upc.vwalletweb.entities.Libro;
+import pe.edu.upc.vwalletweb.entities.Menu;
+import pe.edu.upc.vwalletweb.entities.Reservas;
+import pe.edu.upc.vwalletweb.entities.Transporte;
+
+public class DetalleReservasDTO {
     private int idDetalleReserva;
-    @ManyToOne
-    @JoinColumn(name = "reservas_id")
+
     private Reservas reservas;
-    @ManyToOne
-    @JoinColumn(name = "menu_id")
+
     private Menu menu;
-    @ManyToOne
-    @JoinColumn(name = "transporte_id")
+
     private Transporte transporte;
-    @ManyToOne
-    @JoinColumn(name = "libro_id")
+
     private Libro libro;
 
-    @Column(name = "subtotalReserva", nullable = false)
     private float subtotalReserva;
-
-    public DetalleReservas() {
-    }
-
-    public DetalleReservas(int idDetalleReserva, Reservas reservas, Menu menu, Transporte transporte, Libro libro, float subtotalReserva) {
-        this.idDetalleReserva = idDetalleReserva;
-        this.reservas = reservas;
-        this.menu = menu;
-        this.transporte = transporte;
-        this.libro = libro;
-        this.subtotalReserva = subtotalReserva;
-    }
 
     public int getIdDetalleReserva() {
         return idDetalleReserva;
