@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 @Entity
-@Table(name = "Reservas")
+@Table(name = "reservas")
 public class Reservas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,11 +12,8 @@ public class Reservas {
     @Column(name = "fechaReserva", nullable = false)
     private LocalDate fechaReserva;
     @ManyToOne
-    @JoinColumn(name = "usuarioID")
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-    @ManyToOne
-    @JoinColumn(name = "serviciosID")
-    private Servicios servicios;
 
     public Reservas() {
     }
@@ -25,7 +22,6 @@ public class Reservas {
         this.idReservas = idReservas;
         this.fechaReserva = fechaReserva;
         this.usuario = usuario;
-        this.servicios = servicios;
     }
 
     public int getIdReservas() {
@@ -52,11 +48,4 @@ public class Reservas {
         this.usuario = usuario;
     }
 
-    public Servicios getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(Servicios servicios) {
-        this.servicios = servicios;
-    }
 }
