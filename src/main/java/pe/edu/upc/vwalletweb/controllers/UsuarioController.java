@@ -1,5 +1,6 @@
 package pe.edu.upc.vwalletweb.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +19,9 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/usuarios")
+@RequiredArgsConstructor
 public class UsuarioController {
-    @Autowired
     private IUsuarioService uS;
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
 
