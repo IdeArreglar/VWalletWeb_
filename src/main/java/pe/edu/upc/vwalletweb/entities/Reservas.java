@@ -14,9 +14,6 @@ public class Reservas {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-    @ManyToOne
-    @JoinColumn(name = "servicios_id")
-    private Servicios servicios;
 
     public Reservas() {
     }
@@ -25,7 +22,6 @@ public class Reservas {
         this.idReservas = idReservas;
         this.fechaReserva = fechaReserva;
         this.usuario = usuario;
-        this.servicios = servicios;
     }
 
     public int getIdReservas() {
@@ -52,11 +48,4 @@ public class Reservas {
         this.usuario = usuario;
     }
 
-    public Servicios getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(Servicios servicios) {
-        this.servicios = servicios;
-    }
 }

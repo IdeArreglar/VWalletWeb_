@@ -8,9 +8,8 @@ import java.time.LocalDate;
 @Table(name = "transporte")
 public class Transporte {
     @Id
-    @Column(name="servicios_id")
-    private int idServicios;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idTransporte;
     @Column(name = "universidadSalida",nullable = false,length = 100)
     private String universidadSalida;
     @Column(name = "universidadLlegada",nullable = false,length = 100)
@@ -21,15 +20,15 @@ public class Transporte {
     private LocalDate horaLlegada;
     @Column(name = "precioTransporte",nullable = false)
     private float precioTransporte;
-    @OneToOne
-    @MapsId
+    @ManyToOne
+    @JoinColumn(name = "servicios_id")
     private Servicios servicios;
 
     public Transporte() {
     }
 
-    public Transporte(int idServicios, String universidadSalida, String universidadLlegada, LocalDate horaSalida, LocalDate horaLlegada, float precioTransporte, Servicios servicios) {
-        this.idServicios = idServicios;
+    public Transporte(int idTransporte, String universidadSalida, String universidadLlegada, LocalDate horaSalida, LocalDate horaLlegada, float precioTransporte, Servicios servicios) {
+        this.idTransporte = idTransporte;
         this.universidadSalida = universidadSalida;
         this.universidadLlegada = universidadLlegada;
         this.horaSalida = horaSalida;
@@ -38,12 +37,12 @@ public class Transporte {
         this.servicios = servicios;
     }
 
-    public int getIdServicios() {
-        return idServicios;
+    public int getIdTransporte() {
+        return idTransporte;
     }
 
-    public void setIdServicios(int idServicios) {
-        this.idServicios = idServicios;
+    public void setIdTransporte(int idTransporte) {
+        this.idTransporte = idTransporte;
     }
 
     public String getUniversidadSalida() {

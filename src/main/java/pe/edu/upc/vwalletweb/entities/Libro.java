@@ -19,7 +19,7 @@ public class Libro {
     @Column(name = "genero",nullable = false,length = 100)
     private String genero;
     @ManyToOne
-    @JoinColumn(name = "biblioteca_servicios_servicios_id")
+    @JoinColumn(name = "biblioteca_id")
     private Biblioteca biblioteca;
 
     public Libro() {
