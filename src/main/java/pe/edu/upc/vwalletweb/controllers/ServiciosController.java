@@ -1,5 +1,6 @@
 package pe.edu.upc.vwalletweb.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -13,8 +14,8 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/servicios")
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class ServiciosController {
-    @Autowired
     private IServiciosService sS;
 
     @PostMapping
