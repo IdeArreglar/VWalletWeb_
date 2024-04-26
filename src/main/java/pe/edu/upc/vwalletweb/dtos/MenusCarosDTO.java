@@ -2,15 +2,7 @@ package pe.edu.upc.vwalletweb.dtos;
 
 public class MenusCarosDTO {
     private String menu;
-    private float gasto;
-
-    public MenusCarosDTO() {
-    }
-
-    public MenusCarosDTO(String menu, float gasto) {
-        this.menu = menu;
-        this.gasto = gasto;
-    }
+    private float total_gasto;
 
     public String getMenu() {
         return menu;
@@ -20,11 +12,11 @@ public class MenusCarosDTO {
         this.menu = menu;
     }
 
-    public float getGasto() {
-        return gasto;
+    public float getTotal_gasto() {
+        return total_gasto;
     }
 
-    public void setGasto(float gasto) {
-        this.gasto = gasto;
+    public void setTotal_gasto(float total_gasto) {
+        this.total_gasto = total_gasto;
     }
 }

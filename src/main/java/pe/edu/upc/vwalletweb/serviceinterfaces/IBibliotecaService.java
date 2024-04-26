@@ -10,4 +10,6 @@ public interface IBibliotecaService {
     public List<Biblioteca> list();
 
     public void delete(int idBiblioteca);
+
+    List<String[]>LibroDisponiblePorSede();
 }

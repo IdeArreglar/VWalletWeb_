@@ -1,25 +1,16 @@
 package pe.edu.upc.vwalletweb.dtos;
 
 public class TransportesUniversidadesDTO {
-    private int transporteId;
+    private int idTransporte;
     private String universidadSalida;
     private String universidadLlegada;
 
-    public TransportesUniversidadesDTO() {
+    public int getIdTransporte() {
+        return idTransporte;
     }
 
-    public TransportesUniversidadesDTO(int transporteId, String universidadSalida, String universidadLlegada) {
-        this.transporteId = transporteId;
-        this.universidadSalida = universidadSalida;
-        this.universidadLlegada = universidadLlegada;
-    }
-
-    public int getTransporteId() {
-        return transporteId;
-    }
-
-    public void setTransporteId(int transporteId) {
-        this.transporteId = transporteId;
+    public void setIdTransporte(int idTransporte) {
+        this.idTransporte = idTransporte;
     }
 
     public String getUniversidadSalida() {
