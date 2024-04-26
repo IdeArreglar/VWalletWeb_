@@ -2,6 +2,7 @@ package pe.edu.upc.vwalletweb.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.FechaRecargaSaldoIntervaloDTO;
 import pe.edu.upc.vwalletweb.dtos.RecargaSaldoDTO;
@@ -47,30 +48,30 @@ public class RecargaSaldoController {
         rsS.delete(id);
     }
 
-    @GetMapping("/TotalRecargadoUsuario")
+    @GetMapping("/totalrecargado")
     public List<TotalRecargadoUsuarioDTO> TotalRecargado(){
         List<String[]> filalistarecargatotal = rsS.TotalRecargadoUsuario();
         List<TotalRecargadoUsuarioDTO> dtoLista = new ArrayList<>();
         for(String[] columna:filalistarecargatotal){
             TotalRecargadoUsuarioDTO dto = new TotalRecargadoUsuarioDTO();
            dto.setIdUsuario(Integer.parseInt(columna[0]));
-           dto.setTotal_recargado(Integer.parseInt(columna[1]));
+           dto.setTotal_recargado(Float.parseFloat(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;
     }
 
 
-    @GetMapping("/FechaRecarga")
+    @GetMapping("/fecharecarga")
     public List<FechaRecargaSaldoIntervaloDTO> FechaRecarga(){
-        List<String[]> filalistafecharecarga = rsS.TotalRecargadoUsuario();
+        List<String[]> filalistafecharecarga = rsS.FechaRecargaSaldoIntervalo();
         List<FechaRecargaSaldoIntervaloDTO> dtoLista = new ArrayList<>();
         for(String[] columna:filalistafecharecarga){
             FechaRecargaSaldoIntervaloDTO dto = new FechaRecargaSaldoIntervaloDTO();
-         dto.setFechaRecarga(LocalDate.parse(columna[0]));
-         dto.setIdRecargaSaldo(Integer.parseInt(columna[1]));
-         dto.setMontoRecarga(Integer.parseInt(columna[2]));
-         dto.setIdUsuario(Integer.parseInt(columna[3]));
+        dto.setIdRecargaSaldo(Integer.parseInt(columna[0]));
+        dto.setFechaRecarga(LocalDate.parse(columna[1]));
+        dto.setMontorecarga(Float.parseFloat(columna[2]));
+        dto.setIdUsuario(Integer.parseInt(columna[3]));
             dtoLista.add(dto);
         }
         return dtoLista;
