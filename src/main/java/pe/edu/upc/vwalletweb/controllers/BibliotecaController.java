@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.BibliotecaDTO;
 import pe.edu.upc.vwalletweb.dtos.LibroDisponiblePorSedeDTO;
-import pe.edu.upc.vwalletweb.dtos.MenuDisponiblePorSedeDTO;
 import pe.edu.upc.vwalletweb.entities.Biblioteca;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IBibliotecaService;
 
@@ -18,18 +17,21 @@ import java.util.stream.Collectors;
 public class BibliotecaController {
     @Autowired
     private IBibliotecaService bS;
+
     @PostMapping
     public void registrar(@RequestBody BibliotecaDTO bibliotecaDTO) {
         ModelMapper r = new ModelMapper();
         Biblioteca biblioteca = r.map(bibliotecaDTO, Biblioteca.class);
-        bS.insert( biblioteca);
+        bS.insert(biblioteca);
     }
+
     @PutMapping()
-    public void modificar(@RequestBody BibliotecaDTO bibliotecDTO){
+    public void modificar(@RequestBody BibliotecaDTO bibliotecDTO) {
         ModelMapper m = new ModelMapper();
-        Biblioteca bibliotec = m.map(bibliotecDTO,Biblioteca.class);
+        Biblioteca bibliotec = m.map(bibliotecDTO, Biblioteca.class);
         bS.insert(bibliotec);
     }
+
     @GetMapping
     public List<BibliotecaDTO> list() {
         return bS.list().stream().map(y -> {
@@ -39,10 +41,10 @@ public class BibliotecaController {
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Integer id){
+    public void eliminar(@PathVariable("id") Integer id) {
         bS.delete(id);
     }
-
+    
     @GetMapping("/librodisponibleporsede")
     public List<LibroDisponiblePorSedeDTO> librodisponibleporsede() {
         List<String[]> librosdispos = bS.LibroDisponiblePorSede();
