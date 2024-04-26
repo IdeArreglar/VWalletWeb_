@@ -10,4 +10,7 @@ public interface IMenuService {
     public List<Menu> list();
 
     public void delete(int idMenu);
+
+    public List<String[]>MenuDisponiblePorSede();
+
 }

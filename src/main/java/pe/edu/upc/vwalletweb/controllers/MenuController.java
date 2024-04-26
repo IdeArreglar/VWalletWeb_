@@ -4,9 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.MenuDTO;
+import pe.edu.upc.vwalletweb.dtos.MenuDisponiblePorSedeDTO;
 import pe.edu.upc.vwalletweb.entities.Menu;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IMenuService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,4 +42,30 @@ public class MenuController {
     public void eliminar(@PathVariable("id") Integer id){
         mS.delete(id);
     }
+
+    @GetMapping("/MenuDisponiblePorSede")
+    public List<MenuDisponiblePorSedeDTO> MenuDisponiblePorSede(){
+        List<String[]> menusedefilaLista = mS.MenuDisponiblePorSede();
+        List<MenuDisponiblePorSedeDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:menusedefilaLista){
+            MenuDisponiblePorSedeDTO dto = new MenuDisponiblePorSedeDTO();
+            dto.setIdCafeteria(Integer.parseInt(columna[0]));
+            dto.setIdMenu(Integer.parseInt(columna[1]));
+            dto.setPrecioMenu(Float.parseFloat(columna[2]));
+            dto.setEntrada(columna[3]);
+            dto.setPlatoPrincipal(columna[4]);
+            dto.setPostre(columna[5]);
+            dto.setRefresco(columna[6]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+
+
+
+
+
+
+
 }

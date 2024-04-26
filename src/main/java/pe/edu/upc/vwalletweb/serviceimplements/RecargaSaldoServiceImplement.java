@@ -31,4 +31,9 @@ public class RecargaSaldoServiceImplement implements IRecargaSalgoService {
     public List<String[]> TotalRecargadoUsuario() {
         return rsR.TotalRecargadoUsuario() ;
     }
+
+    @Override
+    public List<String[]> FechaRecargaSaldoIntervalo() {
+        return rsR.FechaRecargaSaldoIntervalo();
+    }
 }

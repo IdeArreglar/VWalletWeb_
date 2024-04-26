@@ -13,4 +13,7 @@ public interface IRecargaSalgoService {
     public void delete(int idRecargaSaldo);
 
     public List<String[]>TotalRecargadoUsuario();
+
+    public List<String[]>FechaRecargaSaldoIntervalo();
+
 }

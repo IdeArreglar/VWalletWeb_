@@ -26,4 +26,9 @@ public class MenuServiceImplement implements IMenuService {
     public void delete(int idMenu) {
         mR.deleteById(idMenu);
     }
+
+    @Override
+    public List<String[]> MenuDisponiblePorSede() {
+        return mR.MenuDisponiblePorSede();
+    }
 }
