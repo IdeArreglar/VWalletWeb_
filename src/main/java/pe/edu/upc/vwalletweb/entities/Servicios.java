@@ -3,7 +3,7 @@ package pe.edu.upc.vwalletweb.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "servicios")
+@Table(name = "Servicios")
 public class Servicios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
