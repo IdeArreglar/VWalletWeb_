@@ -4,9 +4,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.BibliotecaDTO;
+import pe.edu.upc.vwalletweb.dtos.LibroDisponiblePorSedeDTO;
+import pe.edu.upc.vwalletweb.dtos.MenuDisponiblePorSedeDTO;
 import pe.edu.upc.vwalletweb.entities.Biblioteca;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IBibliotecaService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,5 +41,18 @@ public class BibliotecaController {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
         bS.delete(id);
+    }
+
+    @GetMapping("/librodisponibleporsede")
+    public List<LibroDisponiblePorSedeDTO> librodisponibleporsede() {
+        List<String[]> librosdispos = bS.LibroDisponiblePorSede();
+        List<LibroDisponiblePorSedeDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : librosdispos) {
+            LibroDisponiblePorSedeDTO dto = new LibroDisponiblePorSedeDTO();
+            dto.setSedeBiblioteca(columna[0]);
+            dto.setCantidad_libros(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 }

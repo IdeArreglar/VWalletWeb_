@@ -9,12 +9,13 @@ import java.util.List;
 
 @Repository
 public interface IRecargaSaldoRepository extends JpaRepository<RecargaSaldo,Integer> {
+    //01 Query
     @Query(value = "SELECT usuario_id, SUM(monto_recarga) AS total_recargado \n" +
             "FROM recargasaldo \n" +
             "GROUP BY usuario_id; \n", nativeQuery = true)
     public List<String[]>TotalRecargadoUsuario();
 
-
+    //09 Query
     @Query(value="SELECT * FROM recargasaldo  \n" +
             "WHERE fecha_recarga  \n" +
             "BETWEEN '2024-01-01' AND '2024-01-31' \n",nativeQuery = true)

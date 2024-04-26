@@ -26,4 +26,9 @@ public class BibliotecaServiceImplement implements IBibliotecaService {
     public void delete(int idBiblioteca) {
         bR.deleteById(idBiblioteca);
     }
+
+    @Override
+    public List<String[]> LibroDisponiblePorSede() {
+        return bR.LibroDisponiblePorSede();
+    }
 }
