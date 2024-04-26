@@ -3,9 +3,7 @@ package pe.edu.upc.vwalletweb.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.vwalletweb.dtos.MenuDTO;
-import pe.edu.upc.vwalletweb.dtos.MenuDisponiblePorSedeDTO;
-import pe.edu.upc.vwalletweb.dtos.MenusCarosDTO;
+import pe.edu.upc.vwalletweb.dtos.*;
 import pe.edu.upc.vwalletweb.entities.Menu;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IMenuService;
 
@@ -73,6 +71,31 @@ public class MenuController {
             dto.setMenu(columna[0]);
             dto.setGasto(Float.parseFloat(columna[1]));
             dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/topPlates")
+    public List<PlatosMasPedidosDTO> platosMasPedidos() {
+        List<String[]> menusDeFilaLista = mS.platosMasPedidos();
+        List<PlatosMasPedidosDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : menusDeFilaLista) {
+            PlatosMasPedidosDTO dto = new PlatosMasPedidosDTO();
+            dto.setPlato(columna[0]);
+            dto.setCantidad(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/economicos")
+    public List<MenusEconomicosDTO> menusEconomicos() {
+        List<String[]> menusDeFilaLista = mS.menusEconomicos();
+        List<MenusEconomicosDTO> dtoLista = new ArrayList<>();
+        for(String[] columna : menusDeFilaLista){
+            MenusEconomicosDTO dto = new MenusEconomicosDTO();
+            dto.setId(Integer.parseInt(columna[0]));
+            dto.setPrecio(Float.parseFloat(columna[1]));
         }
         return dtoLista;
     }

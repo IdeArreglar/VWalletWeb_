@@ -21,4 +21,16 @@ public interface IMenuRepository extends JpaRepository<Menu, Integer> {
             "ORDER BY total_gasto DESC \n" +
             "LIMIT 3; \n", nativeQuery = true)
     List<String[]> menusCaros();
+
+    @Query(value = "SELECT m.plato_principal AS plato_mas_pedido, COUNT(*) AS cantidad \n" +
+            "FROM Menu m \n" +
+            " JOIN DetalleReservas dr ON dr.menu_id = m.id_menu \n" +
+            " GROUP BY m.plato_principal \n" +
+            "ORDER BY cantidad DESC", nativeQuery = true)
+    List<String[]>platosMasPedidos();
+
+    @Query(value = "SELECT m.id_menu, m.precio_menu " +
+    "FROM menu m " +
+    "WHERE m.precio_menu < (SELECT AVG(precio_menu) FROM menu);",nativeQuery = true)
+    List<String[]>menusEconomicos();
 }
