@@ -1,42 +1,24 @@
-package pe.edu.upc.vwalletweb.entities;
+package pe.edu.upc.vwalletweb.dtos;
 
-import jakarta.persistence.*;
+import pe.edu.upc.vwalletweb.entities.Servicios;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "transporte")
-public class Transporte {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class TransporteDTO {
     private int idTransporte;
-    @Column(name = "universidadSalida",nullable = false,length = 100)
+
     private String universidadSalida;
-    @Column(name = "universidadLlegada",nullable = false,length = 100)
+
     private String universidadLlegada;
-    @Column(name = "horaSalida",nullable = false)
+
     private LocalDateTime horaSalida;
-    @Column(name = "horaLlegada",nullable = false)
+
     private LocalDateTime horaLlegada;
-    @Column(name = "precioTransporte",nullable = false)
+
     private float precioTransporte;
-    @ManyToOne
-    @JoinColumn(name = "servicios_id")
+
     private Servicios servicios;
-
-    public Transporte() {
-    }
-
-    public Transporte(int idTransporte, String universidadSalida, String universidadLlegada, LocalDateTime horaSalida, LocalDateTime horaLlegada, float precioTransporte, Servicios servicios) {
-        this.idTransporte = idTransporte;
-        this.universidadSalida = universidadSalida;
-        this.universidadLlegada = universidadLlegada;
-        this.horaSalida = horaSalida;
-        this.horaLlegada = horaLlegada;
-        this.precioTransporte = precioTransporte;
-        this.servicios = servicios;
-    }
 
     public int getIdTransporte() {
         return idTransporte;

@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+
 @Entity
 @Table(name = "reservas")
 public class Reservas {
@@ -18,7 +19,7 @@ public class Reservas {
     public Reservas() {
     }
 
-    public Reservas(int idReservas, LocalDate fechaReserva, Usuario usuario, Servicios servicios) {
+    public Reservas(int idReservas, LocalDate fechaReserva, Usuario usuario) {
         this.idReservas = idReservas;
         this.fechaReserva = fechaReserva;
         this.usuario = usuario;
@@ -47,5 +48,4 @@ public class Reservas {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
 }
