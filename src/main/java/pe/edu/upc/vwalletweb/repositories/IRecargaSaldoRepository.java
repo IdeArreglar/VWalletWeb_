@@ -15,7 +15,7 @@ public interface IRecargaSaldoRepository extends JpaRepository<RecargaSaldo,Inte
             "GROUP BY usuario_id; \n", nativeQuery = true)
     public List<String[]>TotalRecargadoUsuario();
 
-//Query 9
+    //Query 9
     @Query(value="SELECT * FROM recargasaldo  \n" +
             "WHERE fecha_recarga  \n" +
             "BETWEEN '2024-01-01' AND '2024-01-31' \n",nativeQuery = true)
