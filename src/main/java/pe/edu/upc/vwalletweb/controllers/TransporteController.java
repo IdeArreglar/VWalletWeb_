@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.vwalletweb.dtos.TotalGastoxUsuarioDTO;
 import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
 import pe.edu.upc.vwalletweb.dtos.TransportesUniversidadesDTO;
 import pe.edu.upc.vwalletweb.entities.Transporte;
@@ -57,6 +58,18 @@ public class TransporteController {
             dto.setTransporteId(Integer.parseInt(columna[0]));
             dto.setUniversidadSalida(columna[1]);
             dto.setUniversidadLlegada(columna[2]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+    @GetMapping("/totalgastoxusuario")
+    public List<TotalGastoxUsuarioDTO> TotalGastoPorUsuario(){
+        List<String[]> filalistatotalgasto = tS.totalGastoxUsuario();
+        List<TotalGastoxUsuarioDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filalistatotalgasto){
+            TotalGastoxUsuarioDTO dto = new TotalGastoxUsuarioDTO();
+            dto.setUsuarioId(Integer.parseInt(columna[0]));
+            dto.setTotalGasto(Float.parseFloat(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;
