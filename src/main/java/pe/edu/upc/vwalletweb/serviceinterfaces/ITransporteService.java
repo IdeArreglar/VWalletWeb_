@@ -12,4 +12,5 @@ public interface ITransporteService {
     void delete(int idTransporte);
 
     List<String[]> transportesUniversidades(String uSalida, String uLlegada);
+    List<String[]> totalGastoxUsuario();
 }
