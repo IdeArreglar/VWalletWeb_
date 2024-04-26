@@ -27,4 +27,9 @@ public class DetalleReservaServiceImplement implements IDetalleReservasService {
         drR.deleteById(idDetalleReserva);
     }
 
+    @Override
+    public List<String[]> totalViajesRealizadosPorTransporteID() {
+        return drR.totalViajesRealizadosPorTransporteID();
+    }
+
 }

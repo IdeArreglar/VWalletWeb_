@@ -32,4 +32,9 @@ public class TransporteServiceImplement implements ITransporteService {
     public List<String[]> transportesUniversidades(String uSalida, String uLlegada) {
         return tR.transportesUniversidades(uSalida, uLlegada);
     }
+
+    @Override
+    public List<String[]> totalGastoxUsuario() {
+        return tR.totalGastoxUsuario();
+    }
 }
