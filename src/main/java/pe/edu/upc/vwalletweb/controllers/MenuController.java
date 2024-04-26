@@ -50,13 +50,13 @@ public class MenuController {
         List<MenuDisponiblePorSedeDTO> dtoLista = new ArrayList<>();
         for (String[] columna : menusedefilaLista) {
             MenuDisponiblePorSedeDTO dto = new MenuDisponiblePorSedeDTO();
-            dto.setIdCafeteria(Integer.parseInt(columna[0]));
-            dto.setIdMenu(Integer.parseInt(columna[1]));
-            dto.setPrecioMenu(Float.parseFloat(columna[2]));
-            dto.setEntrada(columna[3]);
-            dto.setPlatoPrincipal(columna[4]);
-            dto.setPostre(columna[5]);
-            dto.setRefresco(columna[6]);
+          dto.setIdMenu(Integer.parseInt(columna[0]));
+          dto.setEntrada(columna[1]);
+          dto.setPlatoPrincipal(columna[2]);
+          dto.setPostre(columna[3]);
+          dto.setPrecioMenu(Float.parseFloat(columna[4]));
+          dto.setRefresco(columna[5]);
+          dto.setIdCafeteria(Integer.parseInt(columna[6]));
             dtoLista.add(dto);
         }
         return dtoLista;
@@ -96,6 +96,7 @@ public class MenuController {
             MenusEconomicosDTO dto = new MenusEconomicosDTO();
             dto.setId(Integer.parseInt(columna[0]));
             dto.setPrecio(Float.parseFloat(columna[1]));
+            dtoLista.add(dto);
         }
         return dtoLista;
     }

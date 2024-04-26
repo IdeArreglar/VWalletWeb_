@@ -1,20 +1,16 @@
 package pe.edu.upc.vwalletweb.dtos;
 
+import org.springframework.cglib.core.Local;
+
 import java.time.LocalDate;
 
 public class FechaRecargaSaldoIntervaloDTO {
-    private LocalDate fechaRecarga;
-    private int idRecargaSaldo;
-    private int montoRecarga;
-    private int idUsuario;
+private int idRecargaSaldo;
+private LocalDate fechaRecarga;
 
-    public LocalDate getFechaRecarga() {
-        return fechaRecarga;
-    }
+private float montorecarga;
 
-    public void setFechaRecarga(LocalDate fechaRecarga) {
-        this.fechaRecarga = fechaRecarga;
-    }
+private int idUsuario;
 
     public int getIdRecargaSaldo() {
         return idRecargaSaldo;
@@ -24,12 +20,20 @@ public class FechaRecargaSaldoIntervaloDTO {
         this.idRecargaSaldo = idRecargaSaldo;
     }
 
-    public int getMontoRecarga() {
-        return montoRecarga;
+    public LocalDate getFechaRecarga() {
+        return fechaRecarga;
     }
 
-    public void setMontoRecarga(int montoRecarga) {
-        this.montoRecarga = montoRecarga;
+    public void setFechaRecarga(LocalDate fechaRecarga) {
+        this.fechaRecarga = fechaRecarga;
+    }
+
+    public float getMontorecarga() {
+        return montorecarga;
+    }
+
+    public void setMontorecarga(float montorecarga) {
+        this.montorecarga = montorecarga;
     }
 
     public int getIdUsuario() {
