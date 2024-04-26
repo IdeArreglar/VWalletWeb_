@@ -5,9 +5,17 @@ import pe.edu.upc.vwalletweb.entities.Menu;
 import java.util.List;
 
 public interface IMenuService {
-    public void insert(Menu menu);
+    void insert(Menu menu);
 
-    public List<Menu> list();
+    List<Menu> list();
 
-    public void delete(int idMenu);
+    void delete(int idMenu);
+
+    List<String[]> MenuDisponiblePorSede();
+
+    List<String[]> menusCaros();
+
+    List<String[]> platosMasPedidos();
+
+    List<String[]> menusEconomicos();
 }

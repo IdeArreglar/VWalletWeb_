@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+
 @Entity
 @Table(name = "reservas")
 public class Reservas {
@@ -11,8 +12,6 @@ public class Reservas {
     private int idReservas;
     @Column(name = "fechaReserva", nullable = false)
     private LocalDate fechaReserva;
-    @Column(name = "totalReserva", nullable = false)
-    private float totalReserva;
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
@@ -20,10 +19,9 @@ public class Reservas {
     public Reservas() {
     }
 
-    public Reservas(int idReservas, LocalDate fechaReserva, float totalReserva, Usuario usuario) {
+    public Reservas(int idReservas, LocalDate fechaReserva, Usuario usuario) {
         this.idReservas = idReservas;
         this.fechaReserva = fechaReserva;
-        this.totalReserva = totalReserva;
         this.usuario = usuario;
     }
 
@@ -41,14 +39,6 @@ public class Reservas {
 
     public void setFechaReserva(LocalDate fechaReserva) {
         this.fechaReserva = fechaReserva;
-    }
-
-    public float getTotalReserva() {
-        return totalReserva;
-    }
-
-    public void setTotalReserva(float totalReserva) {
-        this.totalReserva = totalReserva;
     }
 
     public Usuario getUsuario() {

@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "transporte")
@@ -15,9 +16,9 @@ public class Transporte {
     @Column(name = "universidadLlegada",nullable = false,length = 100)
     private String universidadLlegada;
     @Column(name = "horaSalida",nullable = false)
-    private LocalDate horaSalida;
+    private LocalDateTime horaSalida;
     @Column(name = "horaLlegada",nullable = false)
-    private LocalDate horaLlegada;
+    private LocalDateTime horaLlegada;
     @Column(name = "precioTransporte",nullable = false)
     private float precioTransporte;
     @ManyToOne
@@ -27,7 +28,7 @@ public class Transporte {
     public Transporte() {
     }
 
-    public Transporte(int idTransporte, String universidadSalida, String universidadLlegada, LocalDate horaSalida, LocalDate horaLlegada, float precioTransporte, Servicios servicios) {
+    public Transporte(int idTransporte, String universidadSalida, String universidadLlegada, LocalDateTime horaSalida, LocalDateTime horaLlegada, float precioTransporte, Servicios servicios) {
         this.idTransporte = idTransporte;
         this.universidadSalida = universidadSalida;
         this.universidadLlegada = universidadLlegada;
@@ -61,19 +62,19 @@ public class Transporte {
         this.universidadLlegada = universidadLlegada;
     }
 
-    public LocalDate getHoraSalida() {
+    public LocalDateTime getHoraSalida() {
         return horaSalida;
     }
 
-    public void setHoraSalida(LocalDate horaSalida) {
+    public void setHoraSalida(LocalDateTime horaSalida) {
         this.horaSalida = horaSalida;
     }
 
-    public LocalDate getHoraLlegada() {
+    public LocalDateTime getHoraLlegada() {
         return horaLlegada;
     }
 
-    public void setHoraLlegada(LocalDate horaLlegada) {
+    public void setHoraLlegada(LocalDateTime horaLlegada) {
         this.horaLlegada = horaLlegada;
     }
 

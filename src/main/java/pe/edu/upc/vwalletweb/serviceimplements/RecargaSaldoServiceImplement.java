@@ -26,4 +26,15 @@ public class RecargaSaldoServiceImplement implements IRecargaSalgoService {
     public void delete(int idRecargaSaldo) {
         rsR.deleteById(idRecargaSaldo);
     }
+
+    @Override
+    public List<String[]> TotalRecargadoUsuario() {
+        return rsR.TotalRecargadoUsuario() ;
+    }
+
+    @Override
+    public List<String[]> FechaRecargaSaldoIntervalo() {
+
+        return rsR.FechaRecargaSaldoIntervalo();
+    }
 }
