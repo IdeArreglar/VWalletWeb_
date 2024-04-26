@@ -17,8 +17,6 @@ public class DetalleReservasDTO {
 
     private Libro libro;
 
-    private float subtotalReserva;
-
     public int getIdDetalleReserva() {
         return idDetalleReserva;
     }
@@ -57,13 +55,5 @@ public class DetalleReservasDTO {
 
     public void setLibro(Libro libro) {
         this.libro = libro;
-    }
-
-    public float getSubtotalReserva() {
-        return subtotalReserva;
-    }
-
-    public void setSubtotalReserva(float subtotalReserva) {
-        this.subtotalReserva = subtotalReserva;
     }
 }
