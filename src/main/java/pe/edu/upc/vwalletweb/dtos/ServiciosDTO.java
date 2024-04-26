@@ -1,21 +1,20 @@
 package pe.edu.upc.vwalletweb.dtos;
 
-import jakarta.persistence.Column;
 
 public class ServiciosDTO {
 
-    private int idServicio;
+    private int idServicios;
 
     private String nombreServicio;
 
     private String estado;
 
-    public int getIdServicio() {
-        return idServicio;
+    public int getIdServicios() {
+        return idServicios;
     }
 
-    public void setIdServicio(int idServicio) {
-        this.idServicio = idServicio;
+    public void setIdServicios(int idServicios) {
+        this.idServicios = idServicios;
     }
 
     public String getNombreServicio() {
