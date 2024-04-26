@@ -56,7 +56,7 @@ public class TransporteController {
             TransportesUniversidadesDTO dto = new TransportesUniversidadesDTO();
             dto.setIdTransporte(Integer.parseInt(columna[0]));
             dto.setUniversidadSalida(columna[1]);
-            dto.setUniversidadSalida(columna[2]);
+            dto.setUniversidadLlegada(columna[2]);
             dtoLista.add(dto);
         }
         return dtoLista;
