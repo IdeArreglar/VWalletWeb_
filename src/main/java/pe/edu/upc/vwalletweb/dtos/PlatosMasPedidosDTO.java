@@ -1,23 +1,15 @@
 package pe.edu.upc.vwalletweb.dtos;
 
 public class PlatosMasPedidosDTO {
-    private String plato;
+    private String plato_mas_pedido;
     private int cantidad;
 
-    public PlatosMasPedidosDTO() {
+    public String getPlato_mas_pedido() {
+        return plato_mas_pedido;
     }
 
-    public PlatosMasPedidosDTO(String plato, int cantidad) {
-        this.plato = plato;
-        this.cantidad = cantidad;
-    }
-
-    public String getPlato() {
-        return plato;
-    }
-
-    public void setPlato(String plato) {
-        this.plato = plato;
+    public void setPlato_mas_pedido(String plato_mas_pedido) {
+        this.plato_mas_pedido = plato_mas_pedido;
     }
 
     public int getCantidad() {
@@ -27,5 +19,4 @@ public class PlatosMasPedidosDTO {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
 }

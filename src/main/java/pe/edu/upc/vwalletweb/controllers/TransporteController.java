@@ -54,7 +54,7 @@ public class TransporteController {
         List<TransportesUniversidadesDTO> dtoLista = new ArrayList<>();
         for (String[] columna : transportesDeLaLista) {
             TransportesUniversidadesDTO dto = new TransportesUniversidadesDTO();
-            dto.setTransporteId(Integer.parseInt(columna[0]));
+            dto.setIdTransporte(Integer.parseInt(columna[0]));
             dto.setUniversidadSalida(columna[1]);
             dto.setUniversidadSalida(columna[2]);
             dtoLista.add(dto);

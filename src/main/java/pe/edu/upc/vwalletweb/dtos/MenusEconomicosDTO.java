@@ -1,22 +1,22 @@
 package pe.edu.upc.vwalletweb.dtos;
 
 public class MenusEconomicosDTO {
-    private int id;
-    private float precio;
+    private int idMenu;
+    private float precioMenu;
 
-    public MenusEconomicosDTO() {
+    public int getIdMenu() {
+        return idMenu;
     }
 
-    public MenusEconomicosDTO(int id, float precio) {
-        this.id = id;
-        this.precio = precio;
+    public void setIdMenu(int idMenu) {
+        this.idMenu = idMenu;
     }
 
-    public int getId() {return id; }
+    public float getPrecioMenu() {
+        return precioMenu;
+    }
 
-    public float getPrecio() {return precio; }
-
-    public void setId(int id) { this.id = id; }
-
-    public void setPrecio(float precio) { this.precio = precio; }
+    public void setPrecioMenu(float precioMenu) {
+        this.precioMenu = precioMenu;
+    }
 }

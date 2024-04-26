@@ -62,40 +62,40 @@ public class MenuController {
         return dtoLista;
     }
 
-    @GetMapping("/top")
+    @GetMapping("/menuscaros")
     public List<MenusCarosDTO> menusCaros() {
         List<String[]> menusDeFilaLista = mS.menusCaros();
         List<MenusCarosDTO> dtoLista = new ArrayList<>();
         for (String[] columna : menusDeFilaLista) {
             MenusCarosDTO dto = new MenusCarosDTO();
             dto.setMenu(columna[0]);
-            dto.setGasto(Float.parseFloat(columna[1]));
+            dto.setTotal_gasto(Float.parseFloat(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;
     }
 
-    @GetMapping("/topPlates")
+    @GetMapping("/platomaspedidos")
     public List<PlatosMasPedidosDTO> platosMasPedidos() {
         List<String[]> menusDeFilaLista = mS.platosMasPedidos();
         List<PlatosMasPedidosDTO> dtoLista = new ArrayList<>();
         for (String[] columna : menusDeFilaLista) {
             PlatosMasPedidosDTO dto = new PlatosMasPedidosDTO();
-            dto.setPlato(columna[0]);
+            dto.setPlato_mas_pedido(columna[0]);
             dto.setCantidad(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;
     }
 
-    @GetMapping("/economicos")
+    @GetMapping("/menuseconomicos")
     public List<MenusEconomicosDTO> menusEconomicos() {
         List<String[]> menusDeFilaLista = mS.menusEconomicos();
         List<MenusEconomicosDTO> dtoLista = new ArrayList<>();
         for(String[] columna : menusDeFilaLista){
             MenusEconomicosDTO dto = new MenusEconomicosDTO();
-            dto.setId(Integer.parseInt(columna[0]));
-            dto.setPrecio(Float.parseFloat(columna[1]));
+            dto.setIdMenu(Integer.parseInt(columna[0]));
+            dto.setPrecioMenu(Float.parseFloat(columna[1]));
         }
         return dtoLista;
     }
