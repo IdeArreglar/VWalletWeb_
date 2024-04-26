@@ -3,7 +3,7 @@ package pe.edu.upc.vwalletweb.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-
+//Transporte brindado unicamente a estudiantes universitarios
 @Entity
 @Table(name = "recargasaldo")
 public class RecargaSaldo {

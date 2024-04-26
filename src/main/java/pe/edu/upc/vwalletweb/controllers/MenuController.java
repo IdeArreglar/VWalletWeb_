@@ -3,10 +3,11 @@ package pe.edu.upc.vwalletweb.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.vwalletweb.dtos.MenuDTO;
+import pe.edu.upc.vwalletweb.dtos.*;
 import pe.edu.upc.vwalletweb.entities.Menu;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IMenuService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,12 +23,14 @@ public class MenuController {
         Menu menu = r.map(menuDTO, Menu.class);
         mS.insert(menu);
     }
+
     @PutMapping()
-    public void modificar(@RequestBody MenuDTO menuDTO){
+    public void modificar(@RequestBody MenuDTO menuDTO) {
         ModelMapper m = new ModelMapper();
-        Menu menu = m.map(menuDTO,Menu.class);
+        Menu menu = m.map(menuDTO, Menu.class);
         mS.insert(menu);
     }
+
     @GetMapping
     public List<MenuDTO> list() {
         return mS.list().stream().map(y -> {
@@ -37,7 +40,63 @@ public class MenuController {
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Integer id){
+    public void eliminar(@PathVariable("id") Integer id) {
         mS.delete(id);
+    }
+
+    @GetMapping("/MenuDisponiblePorSede")
+    public List<MenuDisponiblePorSedeDTO> MenuDisponiblePorSede() {
+        List<String[]> menusedefilaLista = mS.MenuDisponiblePorSede();
+        List<MenuDisponiblePorSedeDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : menusedefilaLista) {
+            MenuDisponiblePorSedeDTO dto = new MenuDisponiblePorSedeDTO();
+            dto.setIdCafeteria(Integer.parseInt(columna[0]));
+            dto.setIdMenu(Integer.parseInt(columna[1]));
+            dto.setPrecioMenu(Float.parseFloat(columna[2]));
+            dto.setEntrada(columna[3]);
+            dto.setPlatoPrincipal(columna[4]);
+            dto.setPostre(columna[5]);
+            dto.setRefresco(columna[6]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/top")
+    public List<MenusCarosDTO> menusCaros() {
+        List<String[]> menusDeFilaLista = mS.menusCaros();
+        List<MenusCarosDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : menusDeFilaLista) {
+            MenusCarosDTO dto = new MenusCarosDTO();
+            dto.setMenu(columna[0]);
+            dto.setGasto(Float.parseFloat(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/topPlates")
+    public List<PlatosMasPedidosDTO> platosMasPedidos() {
+        List<String[]> menusDeFilaLista = mS.platosMasPedidos();
+        List<PlatosMasPedidosDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : menusDeFilaLista) {
+            PlatosMasPedidosDTO dto = new PlatosMasPedidosDTO();
+            dto.setPlato(columna[0]);
+            dto.setCantidad(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/economicos")
+    public List<MenusEconomicosDTO> menusEconomicos() {
+        List<String[]> menusDeFilaLista = mS.menusEconomicos();
+        List<MenusEconomicosDTO> dtoLista = new ArrayList<>();
+        for(String[] columna : menusDeFilaLista){
+            MenusEconomicosDTO dto = new MenusEconomicosDTO();
+            dto.setId(Integer.parseInt(columna[0]));
+            dto.setPrecio(Float.parseFloat(columna[1]));
+        }
+        return dtoLista;
     }
 }

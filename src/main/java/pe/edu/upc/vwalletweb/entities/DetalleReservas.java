@@ -21,19 +21,17 @@ public class DetalleReservas {
     @JoinColumn(name = "libro_id")
     private Libro libro;
 
-    @Column(name = "subtotalReserva", nullable = false)
-    private float subtotalReserva;
+
 
     public DetalleReservas() {
     }
 
-    public DetalleReservas(int idDetalleReserva, Reservas reservas, Menu menu, Transporte transporte, Libro libro, float subtotalReserva) {
+    public DetalleReservas(int idDetalleReserva, Reservas reservas, Menu menu, Transporte transporte, Libro libro) {
         this.idDetalleReserva = idDetalleReserva;
         this.reservas = reservas;
         this.menu = menu;
         this.transporte = transporte;
         this.libro = libro;
-        this.subtotalReserva = subtotalReserva;
     }
 
     public int getIdDetalleReserva() {
@@ -74,13 +72,5 @@ public class DetalleReservas {
 
     public void setLibro(Libro libro) {
         this.libro = libro;
-    }
-
-    public float getSubtotalReserva() {
-        return subtotalReserva;
-    }
-
-    public void setSubtotalReserva(float subtotalReserva) {
-        this.subtotalReserva = subtotalReserva;
     }
 }

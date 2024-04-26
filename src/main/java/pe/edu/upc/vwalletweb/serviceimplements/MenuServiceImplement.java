@@ -12,6 +12,7 @@ import java.util.List;
 public class MenuServiceImplement implements IMenuService {
     @Autowired
     private IMenuRepository mR;
+
     @Override
     public void insert(Menu menu) {
         mR.save(menu);
@@ -26,4 +27,20 @@ public class MenuServiceImplement implements IMenuService {
     public void delete(int idMenu) {
         mR.deleteById(idMenu);
     }
+
+    @Override
+    public List<String[]> MenuDisponiblePorSede() {
+        return mR.MenuDisponiblePorSede();
+    }
+
+    @Override
+    public List<String[]> menusCaros() {
+        return mR.menusCaros();
+    }
+
+    @Override
+    public List<String[]> platosMasPedidos() {return mR.platosMasPedidos(); }
+
+    @Override
+    public List<String[]> menusEconomicos() {return mR.menusEconomicos(); }
 }

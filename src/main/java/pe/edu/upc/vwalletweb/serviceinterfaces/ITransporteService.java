@@ -5,9 +5,11 @@ import pe.edu.upc.vwalletweb.entities.Transporte;
 import java.util.List;
 
 public interface ITransporteService {
-    public void insert(Transporte transporte);
+    void insert(Transporte transporte);
 
-    public List<Transporte> list();
+    List<Transporte> list();
 
-    public void delete(int idTransporte);
+    void delete(int idTransporte);
+
+    List<String[]> transportesUniversidades(String uSalida, String uLlegada);
 }

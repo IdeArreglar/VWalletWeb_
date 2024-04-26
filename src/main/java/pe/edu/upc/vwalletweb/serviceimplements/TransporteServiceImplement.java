@@ -12,6 +12,7 @@ import java.util.List;
 public class TransporteServiceImplement implements ITransporteService {
     @Autowired
     private ITransporteRepository tR;
+
     @Override
     public void insert(Transporte transporte) {
         tR.save(transporte);
@@ -25,5 +26,10 @@ public class TransporteServiceImplement implements ITransporteService {
     @Override
     public void delete(int idTransporte) {
         tR.deleteById(idTransporte);
+    }
+
+    @Override
+    public List<String[]> transportesUniversidades(String uSalida, String uLlegada) {
+        return tR.transportesUniversidades(uSalida, uLlegada);
     }
 }
