@@ -10,11 +10,13 @@ import java.util.List;
 @Repository
 public interface ITransporteRepository extends JpaRepository<Transporte, Integer> {
     //Query 3
-    @Query(value = "SELECT id_transporte,universidad_salida, universidad_llegada \n" +
-            "FROM transporte \n" +
-            "WHERE universidad_salida = :uSalida \n" +
-            "    AND universidad_llegada = :uLlegada \n" +
-            "    AND hora_llegada >= NOW(); \n", nativeQuery = true)
+    @Query(value = """
+            SELECT id_transporte,universidad_salida, universidad_llegada \s
+            FROM transporte \s
+            WHERE universidad_salida = :uSalida \s
+                AND universidad_llegada = :uLlegada \s
+                AND hora_salida >= NOW(); \s
+            """, nativeQuery = true)
     List<String[]> transportesUniversidades(String uSalida, String uLlegada);
 
     @Query(value = "SELECT r.usuario_id, SUM(t.precio_transporte) AS TotalGastoTransporte\n " +
