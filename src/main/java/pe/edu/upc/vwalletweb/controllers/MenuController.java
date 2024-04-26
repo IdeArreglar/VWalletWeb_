@@ -50,52 +50,53 @@ public class MenuController {
         List<MenuDisponiblePorSedeDTO> dtoLista = new ArrayList<>();
         for (String[] columna : menusedefilaLista) {
             MenuDisponiblePorSedeDTO dto = new MenuDisponiblePorSedeDTO();
-            dto.setIdCafeteria(Integer.parseInt(columna[0]));
-            dto.setIdMenu(Integer.parseInt(columna[1]));
-            dto.setPrecioMenu(Float.parseFloat(columna[2]));
-            dto.setEntrada(columna[3]);
-            dto.setPlatoPrincipal(columna[4]);
-            dto.setPostre(columna[5]);
-            dto.setRefresco(columna[6]);
+          dto.setIdMenu(Integer.parseInt(columna[0]));
+          dto.setEntrada(columna[1]);
+          dto.setPlatoPrincipal(columna[2]);
+          dto.setPostre(columna[3]);
+          dto.setPrecioMenu(Float.parseFloat(columna[4]));
+          dto.setRefresco(columna[5]);
+          dto.setIdCafeteria(Integer.parseInt(columna[6]));
             dtoLista.add(dto);
         }
         return dtoLista;
     }
 
-    @GetMapping("/menuscaros")
+    @GetMapping("/top")
     public List<MenusCarosDTO> menusCaros() {
         List<String[]> menusDeFilaLista = mS.menusCaros();
         List<MenusCarosDTO> dtoLista = new ArrayList<>();
         for (String[] columna : menusDeFilaLista) {
             MenusCarosDTO dto = new MenusCarosDTO();
             dto.setMenu(columna[0]);
-            dto.setTotal_gasto(Float.parseFloat(columna[1]));
+            dto.setGasto(Float.parseFloat(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;
     }
 
-    @GetMapping("/platomaspedidos")
+    @GetMapping("/topPlates")
     public List<PlatosMasPedidosDTO> platosMasPedidos() {
         List<String[]> menusDeFilaLista = mS.platosMasPedidos();
         List<PlatosMasPedidosDTO> dtoLista = new ArrayList<>();
         for (String[] columna : menusDeFilaLista) {
             PlatosMasPedidosDTO dto = new PlatosMasPedidosDTO();
-            dto.setPlato_mas_pedido(columna[0]);
+            dto.setPlato(columna[0]);
             dto.setCantidad(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;
     }
 
-    @GetMapping("/menuseconomicos")
+    @GetMapping("/economicos")
     public List<MenusEconomicosDTO> menusEconomicos() {
         List<String[]> menusDeFilaLista = mS.menusEconomicos();
         List<MenusEconomicosDTO> dtoLista = new ArrayList<>();
         for(String[] columna : menusDeFilaLista){
             MenusEconomicosDTO dto = new MenusEconomicosDTO();
-            dto.setIdMenu(Integer.parseInt(columna[0]));
-            dto.setPrecioMenu(Float.parseFloat(columna[1]));
+            dto.setId(Integer.parseInt(columna[0]));
+            dto.setPrecio(Float.parseFloat(columna[1]));
+            dtoLista.add(dto);
         }
         return dtoLista;
     }

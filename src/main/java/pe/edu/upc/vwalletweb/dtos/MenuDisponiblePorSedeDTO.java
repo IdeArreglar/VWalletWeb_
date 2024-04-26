@@ -3,25 +3,13 @@ package pe.edu.upc.vwalletweb.dtos;
 import pe.edu.upc.vwalletweb.entities.Cafeteria;
 
 public class MenuDisponiblePorSedeDTO {
-
-    private int idCafeteria;
     private int idMenu;
-    private float precioMenu;
     private String entrada;
-
     private String platoPrincipal;
-
     private String postre;
-
+    private float precioMenu;
     private String refresco;
-
-    public int getIdCafeteria() {
-        return idCafeteria;
-    }
-
-    public void setIdCafeteria(int idCafeteria) {
-        this.idCafeteria = idCafeteria;
-    }
+    private int idCafeteria;
 
     public int getIdMenu() {
         return idMenu;
@@ -29,14 +17,6 @@ public class MenuDisponiblePorSedeDTO {
 
     public void setIdMenu(int idMenu) {
         this.idMenu = idMenu;
-    }
-
-    public float getPrecioMenu() {
-        return precioMenu;
-    }
-
-    public void setPrecioMenu(float precioMenu) {
-        this.precioMenu = precioMenu;
     }
 
     public String getEntrada() {
@@ -63,11 +43,27 @@ public class MenuDisponiblePorSedeDTO {
         this.postre = postre;
     }
 
+    public float getPrecioMenu() {
+        return precioMenu;
+    }
+
+    public void setPrecioMenu(float precioMenu) {
+        this.precioMenu = precioMenu;
+    }
+
     public String getRefresco() {
         return refresco;
     }
 
     public void setRefresco(String refresco) {
         this.refresco = refresco;
+    }
+
+    public int getIdCafeteria() {
+        return idCafeteria;
+    }
+
+    public void setIdCafeteria(int idCafeteria) {
+        this.idCafeteria = idCafeteria;
     }
 }

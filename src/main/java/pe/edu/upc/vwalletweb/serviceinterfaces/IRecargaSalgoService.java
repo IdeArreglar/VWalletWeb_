@@ -1,7 +1,6 @@
 package pe.edu.upc.vwalletweb.serviceinterfaces;
 
 import pe.edu.upc.vwalletweb.entities.RecargaSaldo;
-import pe.edu.upc.vwalletweb.entities.Reservas;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface IRecargaSalgoService {
 
     public void delete(int idRecargaSaldo);
 
-    public List<String[]>TotalRecargadoUsuario();
+    public List<String[]> TotalRecargadoUsuario();
 
     public List<String[]>FechaRecargaSaldoIntervalo();
 

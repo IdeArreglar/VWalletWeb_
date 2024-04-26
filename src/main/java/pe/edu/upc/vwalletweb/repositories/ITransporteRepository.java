@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ITransporteRepository extends JpaRepository<Transporte, Integer> {
+    //Query 3
     @Query(value = "SELECT id_transporte,universidad_salida, universidad_llegada \n" +
             "FROM transporte \n" +
             "WHERE universidad_salida = :uSalida \n" +

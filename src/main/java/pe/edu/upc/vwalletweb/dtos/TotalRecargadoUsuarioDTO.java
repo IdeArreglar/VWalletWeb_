@@ -2,7 +2,7 @@ package pe.edu.upc.vwalletweb.dtos;
 
 public class TotalRecargadoUsuarioDTO {
     private int idUsuario;
-    private int total_recargado;
+    private float total_recargado;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -12,11 +12,11 @@ public class TotalRecargadoUsuarioDTO {
         this.idUsuario = idUsuario;
     }
 
-    public int getTotal_recargado() {
+    public float getTotal_recargado() {
         return total_recargado;
     }
 
-    public void setTotal_recargado(int total_recargado) {
+    public void setTotal_recargado(float total_recargado) {
         this.total_recargado = total_recargado;
     }
 }

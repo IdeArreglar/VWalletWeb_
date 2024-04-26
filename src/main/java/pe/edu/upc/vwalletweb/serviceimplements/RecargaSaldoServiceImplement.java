@@ -34,6 +34,7 @@ public class RecargaSaldoServiceImplement implements IRecargaSalgoService {
 
     @Override
     public List<String[]> FechaRecargaSaldoIntervalo() {
+
         return rsR.FechaRecargaSaldoIntervalo();
     }
 }
