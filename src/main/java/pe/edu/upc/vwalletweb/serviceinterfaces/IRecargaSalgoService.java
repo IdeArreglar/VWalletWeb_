@@ -2,17 +2,18 @@ package pe.edu.upc.vwalletweb.serviceinterfaces;
 
 import pe.edu.upc.vwalletweb.entities.RecargaSaldo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IRecargaSalgoService {
-    public void insert(RecargaSaldo recargasaldo);
+    void insert(RecargaSaldo recargasaldo);
 
-    public List<RecargaSaldo> list();
+    List<RecargaSaldo> list();
 
-    public void delete(int idRecargaSaldo);
+    void delete(int idRecargaSaldo);
 
-    public List<String[]> TotalRecargadoUsuario();
+    List<String[]> TotalRecargadoUsuario();
 
-    public List<String[]>FechaRecargaSaldoIntervalo();
+    List<String[]> FechaRecargaSaldoIntervalo(LocalDate fInicio, LocalDate fFin);
 
 }

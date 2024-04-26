@@ -48,8 +48,8 @@ public class TransporteController {
 
     @GetMapping("/{u_salida}/{u_llegada}")
     public List<TransportesUniversidadesDTO> transportesUniversidades(
-            @PathVariable("u_llegada") String uSalida,
-            @PathVariable("u_salida") String uLlegada
+            @PathVariable("u_salida") String uSalida,
+            @PathVariable("u_llegada") String uLlegada
     ) {
         List<String[]> transportesDeLaLista = tS.transportesUniversidades(uSalida, uLlegada);
         List<TransportesUniversidadesDTO> dtoLista = new ArrayList<>();
