@@ -18,4 +18,11 @@ public interface ITransporteRepository extends JpaRepository<Transporte, Integer
                 AND hora_salida >= NOW(); \s
             """, nativeQuery = true)
     List<String[]> transportesUniversidades(String uSalida, String uLlegada);
+
+    @Query(value = "SELECT r.usuario_id, SUM(t.precio_transporte) AS TotalGastoTransporte\n " +
+            "FROM reservas r\n " +
+            "JOIN detallereservas dr ON r.id_reservas = dr.reservas_id\n " +
+            "JOIN transporte t ON dr.transporte_id = t.id_transporte\n " +
+            "GROUP BY r.usuario_id; ", nativeQuery = true)
+    List<String[]> totalGastoxUsuario();
 }

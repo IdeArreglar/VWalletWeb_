@@ -11,4 +11,5 @@ public interface IDetalleReservasService {
     public List<DetalleReservas> list();
 
     public void delete(int idDetalleReserva);
+    List<String[]> totalViajesRealizadosPorTransporteID();
 }
