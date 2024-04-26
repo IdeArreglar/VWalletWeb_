@@ -1,7 +1,7 @@
 package pe.edu.upc.vwalletweb.dtos;
 
 
-import pe.edu.upc.vwalletweb.entities.Servicios;
+
 import pe.edu.upc.vwalletweb.entities.Usuario;
 
 import java.time.LocalDate;
@@ -11,9 +11,8 @@ public class ReservasDTO {
 
     private LocalDate fechaReserva;
 
+    private float totalReserva;
     private Usuario usuario;
-
-    private Servicios servicios;
 
     public int getIdReservas() {
         return idReservas;
@@ -31,19 +30,19 @@ public class ReservasDTO {
         this.fechaReserva = fechaReserva;
     }
 
+    public float getTotalReserva() {
+        return totalReserva;
+    }
+
+    public void setTotalReserva(float totalReserva) {
+        this.totalReserva = totalReserva;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public Servicios getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(Servicios servicios) {
-        this.servicios = servicios;
     }
 }
