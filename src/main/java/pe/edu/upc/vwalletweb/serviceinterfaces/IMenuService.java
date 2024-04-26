@@ -16,4 +16,6 @@ public interface IMenuService {
     List<String[]> menusCaros();
 
     List<String[]> platosMasPedidos();
+
+    List<String[]> menusEconomicos();
 }
