@@ -14,4 +14,6 @@ public interface IMenuService {
     List<String[]> MenuDisponiblePorSede();
 
     List<String[]> menusCaros();
+
+    List<String[]> platosMasPedidos();
 }

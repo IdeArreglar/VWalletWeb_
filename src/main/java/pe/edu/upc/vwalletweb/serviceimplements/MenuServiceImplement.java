@@ -37,4 +37,7 @@ public class MenuServiceImplement implements IMenuService {
     public List<String[]> menusCaros() {
         return mR.menusCaros();
     }
+
+    @Override
+    public List<String[]> platosMasPedidos() {return mR.platosMasPedidos(); }
 }
