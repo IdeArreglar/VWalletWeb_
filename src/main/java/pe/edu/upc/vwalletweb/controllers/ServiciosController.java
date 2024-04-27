@@ -18,18 +18,21 @@ public class ServiciosController {
     private IServiciosService sS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void registrar(@RequestBody ServiciosDTO serviciosDTO) {
         ModelMapper r = new ModelMapper();
         Servicios servicios = r.map(serviciosDTO, Servicios.class);
         sS.insert(servicios);
     }
     @PutMapping()
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody ServiciosDTO serviDTO){
         ModelMapper m = new ModelMapper();
         Servicios servi = m.map(serviDTO,Servicios.class);
         sS.insert(servi);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public List<ServiciosDTO> list() {
         return sS.list().stream().map(y -> {
             ModelMapper l = new ModelMapper();
@@ -38,12 +41,13 @@ public class ServiciosController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         sS.delete(id);
     }
 
     @GetMapping("/buscarestado")
-    @PreAuthorize("hasAuthority('ESTUDIANTE')")
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public List<ServiciosDTO> buscar(@RequestParam String est) {
         return sS.buscarEstado(est).stream().map(x -> {
             ModelMapper m = new ModelMapper();
