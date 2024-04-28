@@ -2,6 +2,7 @@ package pe.edu.upc.vwalletweb.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.*;
 import pe.edu.upc.vwalletweb.entities.Menu;
@@ -18,6 +19,7 @@ public class MenuController {
     private IMenuService mS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public void registrar(@RequestBody MenuDTO menuDTO) {
         ModelMapper r = new ModelMapper();
         Menu menu = r.map(menuDTO, Menu.class);
@@ -25,6 +27,7 @@ public class MenuController {
     }
 
     @PutMapping()
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public void modificar(@RequestBody MenuDTO menuDTO) {
         ModelMapper m = new ModelMapper();
         Menu menu = m.map(menuDTO, Menu.class);
@@ -32,6 +35,7 @@ public class MenuController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public List<MenuDTO> list() {
         return mS.list().stream().map(y -> {
             ModelMapper l = new ModelMapper();
@@ -40,11 +44,13 @@ public class MenuController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id) {
         mS.delete(id);
     }
 
     @GetMapping("/menudisponibleporsede")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<MenuDisponiblePorSedeDTO> MenuDisponiblePorSede() {
         List<String[]> menusedefilaLista = mS.MenuDisponiblePorSede();
         List<MenuDisponiblePorSedeDTO> dtoLista = new ArrayList<>();
@@ -63,6 +69,7 @@ public class MenuController {
     }
 
     @GetMapping("/menucaros")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<MenusCarosDTO> menusCaros() {
         List<String[]> menusDeFilaLista = mS.menusCaros();
         List<MenusCarosDTO> dtoLista = new ArrayList<>();
@@ -76,6 +83,7 @@ public class MenuController {
     }
 
     @GetMapping("/platomaspedidos")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<PlatosMasPedidosDTO> platosMasPedidos() {
         List<String[]> menusDeFilaLista = mS.platosMasPedidos();
         List<PlatosMasPedidosDTO> dtoLista = new ArrayList<>();
@@ -89,6 +97,7 @@ public class MenuController {
     }
 
     @GetMapping("/economicos")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<MenusEconomicosDTO> menusEconomicos() {
         List<String[]> menusDeFilaLista = mS.menusEconomicos();
         List<MenusEconomicosDTO> dtoLista = new ArrayList<>();
