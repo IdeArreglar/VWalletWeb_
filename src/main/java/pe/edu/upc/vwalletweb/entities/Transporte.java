@@ -21,21 +21,17 @@ public class Transporte {
     private LocalDateTime horaLlegada;
     @Column(name = "precioTransporte",nullable = false)
     private float precioTransporte;
-    @ManyToOne
-    @JoinColumn(name = "servicios_id")
-    private Servicios servicios;
 
     public Transporte() {
     }
 
-    public Transporte(int idTransporte, String universidadSalida, String universidadLlegada, LocalDateTime horaSalida, LocalDateTime horaLlegada, float precioTransporte, Servicios servicios) {
+    public Transporte(int idTransporte, String universidadSalida, String universidadLlegada, LocalDateTime horaSalida, LocalDateTime horaLlegada, float precioTransporte) {
         this.idTransporte = idTransporte;
         this.universidadSalida = universidadSalida;
         this.universidadLlegada = universidadLlegada;
         this.horaSalida = horaSalida;
         this.horaLlegada = horaLlegada;
         this.precioTransporte = precioTransporte;
-        this.servicios = servicios;
     }
 
     public int getIdTransporte() {
@@ -84,13 +80,5 @@ public class Transporte {
 
     public void setPrecioTransporte(float precioTransporte) {
         this.precioTransporte = precioTransporte;
-    }
-
-    public Servicios getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(Servicios servicios) {
-        this.servicios = servicios;
     }
 }

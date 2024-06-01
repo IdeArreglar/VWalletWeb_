@@ -1,7 +1,6 @@
 package pe.edu.upc.vwalletweb.serviceinterfaces;
 
 import pe.edu.upc.vwalletweb.entities.Reservas;
-import pe.edu.upc.vwalletweb.entities.Servicios;
 
 import java.util.List;
 
