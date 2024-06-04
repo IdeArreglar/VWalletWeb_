@@ -2,6 +2,7 @@ package pe.edu.upc.vwalletweb.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.BibliotecaDTO;
 import pe.edu.upc.vwalletweb.dtos.LibroDisponiblePorSedeDTO;
@@ -19,6 +20,7 @@ public class BibliotecaController {
     private IBibliotecaService bS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void registrar(@RequestBody BibliotecaDTO bibliotecaDTO) {
         ModelMapper r = new ModelMapper();
         Biblioteca biblioteca = r.map(bibliotecaDTO, Biblioteca.class);
@@ -26,6 +28,7 @@ public class BibliotecaController {
     }
 
     @PutMapping()
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody BibliotecaDTO bibliotecDTO) {
         ModelMapper m = new ModelMapper();
         Biblioteca bibliotec = m.map(bibliotecDTO, Biblioteca.class);
@@ -33,6 +36,7 @@ public class BibliotecaController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public List<BibliotecaDTO> list() {
         return bS.list().stream().map(y -> {
             ModelMapper l = new ModelMapper();
@@ -41,11 +45,13 @@ public class BibliotecaController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id) {
         bS.delete(id);
     }
     
     @GetMapping("/librodisponibleporsede")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<LibroDisponiblePorSedeDTO> librodisponibleporsede() {
         List<String[]> librosdispos = bS.LibroDisponiblePorSede();
         List<LibroDisponiblePorSedeDTO> dtoLista = new ArrayList<>();

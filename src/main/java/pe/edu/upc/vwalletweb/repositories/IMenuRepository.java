@@ -13,7 +13,7 @@ public interface IMenuRepository extends JpaRepository<Menu, Integer> {
     //Query 4
     @Query(value = "SELECT m.* FROM menu m \n" +
             "JOIN cafeteria c ON m.cafeteria_id = c.id_cafeteria \n" +
-            "WHERE c.sede_cafeteria = 'Monterrico'", nativeQuery = true)
+            "WHERE c.sede_cafeteria = 'Villa'", nativeQuery = true)
     List<String[]> MenuDisponiblePorSede();
     //Query 2
     @Query(value = "SELECT dr.menu_id, SUM(m.precio_menu) AS total_gasto \n" +

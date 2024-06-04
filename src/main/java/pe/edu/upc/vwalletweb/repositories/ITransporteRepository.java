@@ -15,7 +15,7 @@ public interface ITransporteRepository extends JpaRepository<Transporte, Integer
             FROM transporte \s
             WHERE universidad_salida = :uSalida \s
                 AND universidad_llegada = :uLlegada \s
-                AND hora_salida >= NOW(); \s
+               
             """, nativeQuery = true)
     List<String[]> transportesUniversidades(String uSalida, String uLlegada);
 

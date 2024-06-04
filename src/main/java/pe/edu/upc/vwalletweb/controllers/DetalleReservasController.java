@@ -2,6 +2,7 @@ package pe.edu.upc.vwalletweb.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.DetalleReservasDTO;
 import pe.edu.upc.vwalletweb.dtos.TotalGastoxUsuarioDTO;
@@ -20,18 +21,21 @@ public class DetalleReservasController {
     private IDetalleReservasService drS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public void registrar(@RequestBody DetalleReservasDTO dreservasDTO) {
         ModelMapper r = new ModelMapper();
         DetalleReservas detallereservas = r.map(dreservasDTO, DetalleReservas.class);
         drS.insert(detallereservas );
     }
     @PutMapping()
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody DetalleReservasDTO dereservasDTO){
         ModelMapper m = new ModelMapper();
         DetalleReservas dereserva = m.map(dereservasDTO,DetalleReservas.class);
         drS.insert(dereserva);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public List<DetalleReservasDTO> list() {
         return drS.list().stream().map(y -> {
             ModelMapper l = new ModelMapper();
@@ -40,11 +44,13 @@ public class DetalleReservasController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         drS.delete(id);
     }
 
     @GetMapping("/viajesmasrealizados")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<totalViajesRealizadosPorTransporteidDTO> Obtenerviajesmasrealizados(){
         List<String[]> filalistaviajesmasrealizados = drS.totalViajesRealizadosPorTransporteID();
         List<totalViajesRealizadosPorTransporteidDTO> dtoLista = new ArrayList<>();
