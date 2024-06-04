@@ -1,8 +1,5 @@
 package pe.edu.upc.vwalletweb.dtos;
 
-import pe.edu.upc.vwalletweb.entities.Servicios;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class TransporteDTO {
@@ -17,8 +14,6 @@ public class TransporteDTO {
     private LocalDateTime horaLlegada;
 
     private float precioTransporte;
-
-    private Servicios servicios;
 
     public int getIdTransporte() {
         return idTransporte;
@@ -66,13 +61,5 @@ public class TransporteDTO {
 
     public void setPrecioTransporte(float precioTransporte) {
         this.precioTransporte = precioTransporte;
-    }
-
-    public Servicios getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(Servicios servicios) {
-        this.servicios = servicios;
     }
 }

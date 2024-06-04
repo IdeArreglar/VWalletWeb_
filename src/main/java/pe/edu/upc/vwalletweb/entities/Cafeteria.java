@@ -11,17 +11,13 @@ public class Cafeteria {
     private int idCafeteria;
     @Column(name = "sedeCafeteria",nullable = false,length = 100)
     private String sedeCafeteria;
-    @ManyToOne
-    @JoinColumn(name = "servicios_id")
-    private Servicios servicios;
 
     public Cafeteria() {
     }
 
-    public Cafeteria(int idCafeteria, String sedeCafeteria, Servicios servicios) {
+    public Cafeteria(int idCafeteria, String sedeCafeteria) {
         this.idCafeteria = idCafeteria;
         this.sedeCafeteria = sedeCafeteria;
-        this.servicios = servicios;
     }
 
     public int getIdCafeteria() {
@@ -40,11 +36,4 @@ public class Cafeteria {
         this.sedeCafeteria = sedeCafeteria;
     }
 
-    public Servicios getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(Servicios servicios) {
-        this.servicios = servicios;
-    }
 }

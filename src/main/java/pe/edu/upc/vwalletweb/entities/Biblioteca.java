@@ -10,17 +10,13 @@ public class Biblioteca {
     private int idBiblioteca;
     @Column(name = "sedeBiblioteca",nullable = false,length = 100)
     private String sedeBiblioteca;
-    @ManyToOne
-    @JoinColumn(name = "servicios_id")
-    private Servicios servicios;
 
     public Biblioteca() {
     }
 
-    public Biblioteca(int idBiblioteca, String sedeBiblioteca, Servicios servicios) {
+    public Biblioteca(int idBiblioteca, String sedeBiblioteca) {
         this.idBiblioteca = idBiblioteca;
         this.sedeBiblioteca = sedeBiblioteca;
-        this.servicios = servicios;
     }
 
     public int getIdBiblioteca() {
@@ -37,13 +33,5 @@ public class Biblioteca {
 
     public void setSedeBiblioteca(String sedeBiblioteca) {
         this.sedeBiblioteca = sedeBiblioteca;
-    }
-
-    public Servicios getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(Servicios servicios) {
-        this.servicios = servicios;
     }
 }
