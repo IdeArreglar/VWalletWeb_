@@ -3,7 +3,7 @@ package pe.edu.upc.vwalletweb.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-
+//Aqui se podra generar las recargas y el monto necesario a utilizar por el estudiante
 @Entity
 @Table(name = "recargasaldo")
 public class RecargaSaldo {

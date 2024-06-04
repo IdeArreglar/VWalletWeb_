@@ -4,47 +4,47 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.vwalletweb.dtos.ReservasDTO;
-import pe.edu.upc.vwalletweb.dtos.ServiciosDTO;
-import pe.edu.upc.vwalletweb.entities.Reservas;
-import pe.edu.upc.vwalletweb.entities.Servicios;
-import pe.edu.upc.vwalletweb.serviceinterfaces.IReservasService;
+import pe.edu.upc.vwalletweb.dtos.LibroDTO;
+import pe.edu.upc.vwalletweb.entities.Libro;
+import pe.edu.upc.vwalletweb.serviceinterfaces.ILibroService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @RestController
-@RequestMapping("/reservas")
-public class ReservasController {
+@RequestMapping("/libro")
+public class LibroController {
     @Autowired
-    private IReservasService rS;
+    private ILibroService lS;
 
     @PostMapping
     @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
-    public void registrar(@RequestBody ReservasDTO reservasDTO) {
+    public void registrar(@RequestBody LibroDTO libroDTO) {
         ModelMapper r = new ModelMapper();
-        Reservas reservas = r.map(reservasDTO, Reservas.class);
-        rS.insert(reservas);
+        Libro libro = r.map(libroDTO, Libro.class);
+        lS.insert(libro);
     }
     @PutMapping()
     @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
-    public void modificar(@RequestBody ReservasDTO reserDTO){
+    public void modificar(@RequestBody LibroDTO liDTO){
         ModelMapper m = new ModelMapper();
-        Reservas reser = m.map(reserDTO,Reservas.class);
-        rS.insert(reser);
+        Libro libro = m.map(liDTO,Libro.class);
+        lS.insert(libro);
     }
     @GetMapping
     @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
-    public List<ReservasDTO> list() {
-        return rS.list().stream().map(y -> {
+    public List<LibroDTO> list() {
+        return lS.list().stream().map(y -> {
             ModelMapper l = new ModelMapper();
-            return l.map(y, ReservasDTO.class);
+            return l.map(y, LibroDTO.class);
         }).collect(Collectors.toList());
     }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
-        rS.delete(id);
+        lS.delete(id);
     }
+
 }

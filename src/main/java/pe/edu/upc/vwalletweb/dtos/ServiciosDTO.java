@@ -4,18 +4,18 @@ import jakarta.persistence.Column;
 
 public class ServiciosDTO {
 
-    private int idServicio;
+    private int idServicios;
 
     private String nombreServicio;
 
     private String estado;
 
     public int getIdServicio() {
-        return idServicio;
+        return idServicios;
     }
 
     public void setIdServicio(int idServicio) {
-        this.idServicio = idServicio;
+        this.idServicios = idServicio;
     }
 
     public String getNombreServicio() {
