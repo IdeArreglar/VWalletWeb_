@@ -3,7 +3,7 @@ package pe.edu.upc.vwalletweb.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.UsuarioDTO;
 import pe.edu.upc.vwalletweb.entities.TypeUser;
@@ -21,16 +21,13 @@ import java.util.stream.Collectors;
 public class UsuarioController {
     @Autowired
     private IUsuarioService uS;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+
 
 
     @PostMapping
     public void registrar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
-        String encodedPassword = passwordEncoder.encode(u.getPasswordUsuario());
-        u.setPasswordUsuario(encodedPassword);
         uS.insert(u);
     }
 
