@@ -1,5 +1,6 @@
 package pe.edu.upc.vwalletweb.serviceinterfaces;
 
+import pe.edu.upc.vwalletweb.entities.Cafeteria;
 import pe.edu.upc.vwalletweb.entities.Transporte;
 
 import java.util.List;
@@ -10,6 +11,8 @@ public interface ITransporteService {
     List<Transporte> list();
 
     void delete(int idTransporte);
+
+    public Transporte listarId(Integer idTransporte);
 
     List<String[]> transportesUniversidades(String uSalida, String uLlegada);
     List<String[]> totalGastoxUsuario();

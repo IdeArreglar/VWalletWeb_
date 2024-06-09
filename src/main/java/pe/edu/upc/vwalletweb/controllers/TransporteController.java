@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.vwalletweb.dtos.BibliotecaDTO;
 import pe.edu.upc.vwalletweb.dtos.TotalGastoxUsuarioDTO;
 import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
 import pe.edu.upc.vwalletweb.dtos.TransportesUniversidadesDTO;
@@ -31,6 +32,13 @@ public class TransporteController {
         ModelMapper m = new ModelMapper();
         Transporte transport = m.map(transportDTO, Transporte.class);
         tS.insert(transport);
+    }
+
+    @GetMapping("/{id}")
+    public TransporteDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        TransporteDTO dto = m.map(tS.listarId(id), TransporteDTO.class);
+        return dto;
     }
 
     @GetMapping

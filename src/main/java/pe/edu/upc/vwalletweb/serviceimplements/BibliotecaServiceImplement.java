@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.serviceimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.vwalletweb.entities.Biblioteca;
+import pe.edu.upc.vwalletweb.entities.Usuario;
 import pe.edu.upc.vwalletweb.repositories.IBibliotecaRepository;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IBibliotecaService;
 
@@ -25,6 +26,11 @@ public class BibliotecaServiceImplement implements IBibliotecaService {
     @Override
     public void delete(int idBiblioteca) {
         bR.deleteById(idBiblioteca);
+    }
+
+    @Override
+    public Biblioteca listarId(Integer idBiblioteca) {
+        return bR.findById(idBiblioteca).orElse(new Biblioteca());
     }
 
     @Override

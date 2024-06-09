@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.vwalletweb.dtos.BibliotecaDTO;
 import pe.edu.upc.vwalletweb.dtos.CafeteriaDTO;
 import pe.edu.upc.vwalletweb.entities.Cafeteria;
 import pe.edu.upc.vwalletweb.serviceinterfaces.ICafeteriaService;
@@ -27,6 +28,13 @@ public class CafeteriaController {
         ModelMapper m = new ModelMapper();
         Cafeteria cafe = m.map(cafeDTO,Cafeteria.class);
         cS.insert(cafe);
+    }
+
+    @GetMapping("/{id}")
+    public CafeteriaDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        CafeteriaDTO dto = m.map(cS.listarId(id), CafeteriaDTO.class);
+        return dto;
     }
     @GetMapping
     public List<CafeteriaDTO> list() {
