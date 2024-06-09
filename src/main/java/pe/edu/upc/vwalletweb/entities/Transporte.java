@@ -16,16 +16,16 @@ public class Transporte {
     @Column(name = "universidadLlegada",nullable = false,length = 100)
     private String universidadLlegada;
     @Column(name = "horaSalida",nullable = false)
-    private int horaSalida;
+    private LocalDateTime horaSalida;
     @Column(name = "horaLlegada",nullable = false)
-    private int horaLlegada;
+    private LocalDateTime horaLlegada;
     @Column(name = "precioTransporte",nullable = false)
     private float precioTransporte;
 
     public Transporte() {
     }
 
-    public Transporte(int idTransporte, String universidadSalida, String universidadLlegada, int horaSalida, int horaLlegada, float precioTransporte) {
+    public Transporte(int idTransporte, String universidadSalida, String universidadLlegada, LocalDateTime horaSalida, LocalDateTime horaLlegada, float precioTransporte) {
         this.idTransporte = idTransporte;
         this.universidadSalida = universidadSalida;
         this.universidadLlegada = universidadLlegada;
@@ -58,19 +58,19 @@ public class Transporte {
         this.universidadLlegada = universidadLlegada;
     }
 
-    public int getHoraSalida() {
+    public LocalDateTime getHoraSalida() {
         return horaSalida;
     }
 
-    public void setHoraSalida(int horaSalida) {
+    public void setHoraSalida(LocalDateTime horaSalida) {
         this.horaSalida = horaSalida;
     }
 
-    public int getHoraLlegada() {
+    public LocalDateTime getHoraLlegada() {
         return horaLlegada;
     }
 
-    public void setHoraLlegada(int horaLlegada) {
+    public void setHoraLlegada(LocalDateTime horaLlegada) {
         this.horaLlegada = horaLlegada;
     }
 
