@@ -2,7 +2,7 @@ package pe.edu.upc.vwalletweb.serviceimplements;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.stereotype.Service;
 import pe.edu.upc.vwalletweb.entities.Usuario;
 import pe.edu.upc.vwalletweb.repositories.IUsuarioRepository;

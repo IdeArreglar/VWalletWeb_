@@ -2,6 +2,7 @@ package pe.edu.upc.vwalletweb.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.vwalletweb.entities.Cafeteria;
 import pe.edu.upc.vwalletweb.entities.Transporte;
 import pe.edu.upc.vwalletweb.repositories.ITransporteRepository;
 import pe.edu.upc.vwalletweb.serviceinterfaces.ITransporteService;
@@ -26,6 +27,11 @@ public class TransporteServiceImplement implements ITransporteService {
     @Override
     public void delete(int idTransporte) {
         tR.deleteById(idTransporte);
+    }
+
+    @Override
+    public Transporte listarId(Integer idTransporte) {
+        return tR.findById(idTransporte).orElse(new Transporte());
     }
 
     @Override

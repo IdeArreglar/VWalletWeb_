@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.BibliotecaDTO;
 import pe.edu.upc.vwalletweb.dtos.LibroDisponiblePorSedeDTO;
+import pe.edu.upc.vwalletweb.dtos.UsuarioDTO;
 import pe.edu.upc.vwalletweb.entities.Biblioteca;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IBibliotecaService;
 
@@ -26,7 +27,12 @@ public class BibliotecaController {
         Biblioteca biblioteca = r.map(bibliotecaDTO, Biblioteca.class);
         bS.insert(biblioteca);
     }
-
+    @GetMapping("/{id}")
+    public BibliotecaDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        BibliotecaDTO dto = m.map(bS.listarId(id), BibliotecaDTO.class);
+        return dto;
+    }
     @PutMapping()
     @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody BibliotecaDTO bibliotecDTO) {

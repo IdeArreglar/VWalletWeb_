@@ -3,8 +3,7 @@ package pe.edu.upc.vwalletweb.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.UsuarioDTO;
 import pe.edu.upc.vwalletweb.entities.TypeUser;
@@ -23,8 +22,9 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService uS;
 
+
+
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
     public void registrar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
@@ -32,7 +32,6 @@ public class UsuarioController {
     }
 
     @PutMapping
-
     public void modificar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
@@ -40,13 +39,11 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-
     public void eliminar(@PathVariable("id") Long id) {
         uS.delete(id);
     }
 
     @GetMapping("/{id}")
-
     public UsuarioDTO listarId(@PathVariable("id") Long id) {
         ModelMapper m = new ModelMapper();
         UsuarioDTO dto = m.map(uS.listarId(id), UsuarioDTO.class);
@@ -54,7 +51,6 @@ public class UsuarioController {
     }
 
     @GetMapping
-
     public List<UsuarioDTO> listar() {
         return uS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
