@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.DetalleReservasDTO;
+import pe.edu.upc.vwalletweb.dtos.LibroDTO;
 import pe.edu.upc.vwalletweb.dtos.TotalGastoxUsuarioDTO;
 import pe.edu.upc.vwalletweb.dtos.totalViajesRealizadosPorTransporteidDTO;
 import pe.edu.upc.vwalletweb.entities.DetalleReservas;
@@ -38,6 +39,13 @@ public class DetalleReservasController {
             return l.map(y, DetalleReservasDTO.class);
         }).collect(Collectors.toList());
     }
+    @GetMapping("/{id}")
+    public DetalleReservasDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        DetalleReservasDTO dto = m.map(drS.listarId(id), DetalleReservasDTO.class);
+        return dto;
+    }
+
 
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){

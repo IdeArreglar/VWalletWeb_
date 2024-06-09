@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.FechaRecargaSaldoIntervaloDTO;
+import pe.edu.upc.vwalletweb.dtos.MenuDTO;
 import pe.edu.upc.vwalletweb.dtos.RecargaSaldoDTO;
 import pe.edu.upc.vwalletweb.dtos.TotalRecargadoUsuarioDTO;
 import pe.edu.upc.vwalletweb.entities.RecargaSaldo;
@@ -32,6 +33,12 @@ public class RecargaSaldoController {
         ModelMapper m = new ModelMapper();
         RecargaSaldo recargasal = m.map(recargasalDTO, RecargaSaldo.class);
         rsS.insert(recargasal);
+    }
+    @GetMapping("/{id}")
+    public RecargaSaldoDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        RecargaSaldoDTO dto = m.map(rsS.listarId(id), RecargaSaldoDTO.class);
+        return dto;
     }
 
     @GetMapping

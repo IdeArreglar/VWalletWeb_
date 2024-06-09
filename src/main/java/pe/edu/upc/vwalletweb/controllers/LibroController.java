@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.vwalletweb.dtos.CafeteriaDTO;
 import pe.edu.upc.vwalletweb.dtos.LibroDTO;
 import pe.edu.upc.vwalletweb.entities.Libro;
 import pe.edu.upc.vwalletweb.serviceinterfaces.ILibroService;
@@ -23,11 +24,20 @@ public class LibroController {
         Libro libro = r.map(libroDTO, Libro.class);
         lS.insert(libro);
     }
+
+
     @PutMapping()
     public void modificar(@RequestBody LibroDTO liDTO){
         ModelMapper m = new ModelMapper();
         Libro libro = m.map(liDTO,Libro.class);
         lS.insert(libro);
+    }
+
+    @GetMapping("/{id}")
+    public LibroDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        LibroDTO dto = m.map(lS.listarId(id), LibroDTO.class);
+        return dto;
     }
     @GetMapping
     public List<LibroDTO> list() {

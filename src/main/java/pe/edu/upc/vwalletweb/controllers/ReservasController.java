@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.vwalletweb.dtos.RecargaSaldoDTO;
 import pe.edu.upc.vwalletweb.dtos.ReservasDTO;
 import pe.edu.upc.vwalletweb.entities.Reservas;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IReservasService;
@@ -28,6 +29,13 @@ public class ReservasController {
         Reservas reser = m.map(reserDTO,Reservas.class);
         rS.insert(reser);
     }
+    @GetMapping("/{id}")
+    public ReservasDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        ReservasDTO dto = m.map(rS.listarId(id), ReservasDTO.class);
+        return dto;
+    }
+
     @GetMapping
     public List<ReservasDTO> list() {
         return rS.list().stream().map(y -> {

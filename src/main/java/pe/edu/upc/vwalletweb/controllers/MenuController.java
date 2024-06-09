@@ -30,6 +30,12 @@ public class MenuController {
         Menu menu = m.map(menuDTO, Menu.class);
         mS.insert(menu);
     }
+    @GetMapping("/{id}")
+    public MenuDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        MenuDTO dto = m.map(mS.listarId(id), MenuDTO.class);
+        return dto;
+    }
 
     @GetMapping
     public List<MenuDTO> list() {

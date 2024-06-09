@@ -2,6 +2,7 @@ package pe.edu.upc.vwalletweb.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.vwalletweb.entities.Cafeteria;
 import pe.edu.upc.vwalletweb.entities.Libro;
 import pe.edu.upc.vwalletweb.repositories.ILibroRepository;
 import pe.edu.upc.vwalletweb.serviceinterfaces.ILibroService;
@@ -20,6 +21,11 @@ public class LibroServiceImplement implements ILibroService {
     @Override
     public List<Libro> list() {
         return lR.findAll();
+    }
+
+    @Override
+    public Libro listarId(Integer idLibro) {
+        return lR.findById(idLibro).orElse(new Libro());
     }
 
     @Override

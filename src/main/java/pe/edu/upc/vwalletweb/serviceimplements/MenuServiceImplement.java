@@ -2,6 +2,7 @@ package pe.edu.upc.vwalletweb.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.vwalletweb.entities.Libro;
 import pe.edu.upc.vwalletweb.entities.Menu;
 import pe.edu.upc.vwalletweb.repositories.IMenuRepository;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IMenuService;
@@ -26,6 +27,11 @@ public class MenuServiceImplement implements IMenuService {
     @Override
     public void delete(int idMenu) {
         mR.deleteById(idMenu);
+    }
+
+    @Override
+    public Menu listarId(Integer idMenu) {
+        return mR.findById(idMenu).orElse(new Menu());
     }
 
     @Override

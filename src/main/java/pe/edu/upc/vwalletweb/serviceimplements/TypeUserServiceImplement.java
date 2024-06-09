@@ -12,7 +12,6 @@ import java.util.List;
 public class TypeUserServiceImplement implements ITypeUserService {
     @Autowired
     private ITypeUserRepository tR;
-
     @Override
     public void insert(TypeUser typeUser) {
         tR.save(typeUser);
