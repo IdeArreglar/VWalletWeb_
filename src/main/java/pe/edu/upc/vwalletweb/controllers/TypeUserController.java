@@ -2,7 +2,7 @@ package pe.edu.upc.vwalletweb.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.TypeUserDTO;
 import pe.edu.upc.vwalletweb.entities.TypeUser;
@@ -18,7 +18,7 @@ public class TypeUserController {
     private ITypeUserService tS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public void registrar(@RequestBody TypeUserDTO dto) {
         ModelMapper m = new ModelMapper();
         TypeUser r = m.map(dto, TypeUser.class);
@@ -26,7 +26,7 @@ public class TypeUserController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public void modificar(@RequestBody TypeUserDTO dto) {
         ModelMapper m = new ModelMapper();
         TypeUser r = m.map(dto, TypeUser.class);
@@ -34,13 +34,13 @@ public class TypeUserController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public void eliminar(@PathVariable("id") Long id) {
         tS.delete(id);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public TypeUserDTO listarId(@PathVariable("id") Long id) {
         ModelMapper m = new ModelMapper();
         TypeUserDTO dto = m.map(tS.listarId(id), TypeUserDTO.class);
@@ -48,7 +48,7 @@ public class TypeUserController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public List<TypeUserDTO> listar() {
         return tS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();

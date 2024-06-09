@@ -2,7 +2,7 @@ package pe.edu.upc.vwalletweb.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.BibliotecaDTO;
 import pe.edu.upc.vwalletweb.dtos.CafeteriaDTO;
@@ -19,14 +19,14 @@ public class CafeteriaController {
     private ICafeteriaService cS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public void registrar(@RequestBody CafeteriaDTO cafeteriaDTO) {
         ModelMapper r = new ModelMapper();
         Cafeteria cafeteria = r.map(cafeteriaDTO, Cafeteria.class);
         cS.insert(cafeteria);
     }
     @PutMapping()
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public void modificar(@RequestBody CafeteriaDTO cafeDTO){
         ModelMapper m = new ModelMapper();
         Cafeteria cafe = m.map(cafeDTO,Cafeteria.class);
@@ -40,7 +40,7 @@ public class CafeteriaController {
         return dto;
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
+
     public List<CafeteriaDTO> list() {
         return cS.list().stream().map(y -> {
             ModelMapper l = new ModelMapper();
@@ -49,7 +49,7 @@ public class CafeteriaController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public void eliminar(@PathVariable("id") Integer id){
         cS.delete(id);
     }

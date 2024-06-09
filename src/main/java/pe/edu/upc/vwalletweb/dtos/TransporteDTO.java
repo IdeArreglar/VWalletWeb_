@@ -9,9 +9,9 @@ public class TransporteDTO {
 
     private String universidadLlegada;
 
-    private int horaSalida;
+    private LocalDateTime horaSalida;
 
-    private int horaLlegada;
+    private LocalDateTime horaLlegada;
 
     private float precioTransporte;
 
@@ -39,19 +39,19 @@ public class TransporteDTO {
         this.universidadLlegada = universidadLlegada;
     }
 
-    public int getHoraSalida() {
+    public LocalDateTime getHoraSalida() {
         return horaSalida;
     }
 
-    public void setHoraSalida(int horaSalida) {
+    public void setHoraSalida(LocalDateTime horaSalida) {
         this.horaSalida = horaSalida;
     }
 
-    public int getHoraLlegada() {
+    public LocalDateTime getHoraLlegada() {
         return horaLlegada;
     }
 
-    public void setHoraLlegada(int horaLlegada) {
+    public void setHoraLlegada(LocalDateTime horaLlegada) {
         this.horaLlegada = horaLlegada;
     }
 

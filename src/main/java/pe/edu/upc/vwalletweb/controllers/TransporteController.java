@@ -2,7 +2,7 @@ package pe.edu.upc.vwalletweb.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.BibliotecaDTO;
 import pe.edu.upc.vwalletweb.dtos.TotalGastoxUsuarioDTO;
@@ -22,7 +22,7 @@ public class TransporteController {
     private ITransporteService tS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
+
     public void registrar(@RequestBody TransporteDTO transporteDTO) {
         ModelMapper r = new ModelMapper();
         Transporte transporte = r.map(transporteDTO, Transporte.class);
@@ -30,7 +30,7 @@ public class TransporteController {
     }
 
     @PutMapping()
-    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
+
     public void modificar(@RequestBody TransporteDTO transportDTO) {
         ModelMapper m = new ModelMapper();
         Transporte transport = m.map(transportDTO, Transporte.class);
@@ -45,7 +45,7 @@ public class TransporteController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
+
     public List<TransporteDTO> list() {
         return tS.list().stream().map(y -> {
             ModelMapper l = new ModelMapper();
@@ -54,13 +54,13 @@ public class TransporteController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
+
     public void eliminar(@PathVariable("id") Integer id) {
         tS.delete(id);
     }
 
     @GetMapping("/{u_salida}/{u_llegada}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public List<TransportesUniversidadesDTO> transportesUniversidades(
             @PathVariable("u_salida") String uSalida,
             @PathVariable("u_llegada") String uLlegada
@@ -77,7 +77,7 @@ public class TransporteController {
         return dtoLista;
     }
     @GetMapping("/totalgastoxusuario")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public List<TotalGastoxUsuarioDTO> TotalGastoPorUsuario(){
         List<String[]> filalistatotalgasto = tS.totalGastoxUsuario();
         List<TotalGastoxUsuarioDTO> dtoLista = new ArrayList<>();
