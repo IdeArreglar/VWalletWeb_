@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/typeUsers")
+@RequestMapping("/typeusers")
 public class TypeUserController {
     @Autowired
     private ITypeUserService tS;

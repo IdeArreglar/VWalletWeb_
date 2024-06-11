@@ -22,23 +22,18 @@ public class Usuario implements Serializable {
 
     @Column(length = 200)
     private String emailUsuario;
-
     private Boolean enabledUsuario;
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id")
-    private List<TypeUser> typeUsers;
+//aca borre lo de onetomany(linea para security)
 
     public Usuario() {
     }
 
-    public Usuario(Long idUsuario, String nameUsuario, String passwordUsuario, String emailUsuario, Boolean enabledUsuario, List<TypeUser> typeUsers) {
+    public Usuario(Long idUsuario, String nameUsuario, String passwordUsuario, String emailUsuario, Boolean enabledUsuario) {
         this.idUsuario = idUsuario;
         this.nameUsuario = nameUsuario;
         this.passwordUsuario = passwordUsuario;
         this.emailUsuario = emailUsuario;
         this.enabledUsuario = enabledUsuario;
-        this.typeUsers = typeUsers;
     }
 
     public Long getIdUsuario() {
@@ -79,14 +74,6 @@ public class Usuario implements Serializable {
 
     public void setEnabledUsuario(Boolean enabledUsuario) {
         this.enabledUsuario = enabledUsuario;
-    }
-
-    public List<TypeUser> getTypeUsers() {
-        return typeUsers;
-    }
-
-    public void setTypeUsers(List<TypeUser> typeUsers) {
-        this.typeUsers = typeUsers;
     }
 }
 

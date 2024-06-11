@@ -12,7 +12,7 @@ public class TypeUser implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTyperUser;
-
+    @Column(name = "typeTypeUser",nullable = false,length = 100)
     private String typeTypeUser;
 
     @ManyToOne()
