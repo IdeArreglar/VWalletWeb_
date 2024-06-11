@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.serviceimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.vwalletweb.entities.DetalleReservas;
+import pe.edu.upc.vwalletweb.entities.Transporte;
 import pe.edu.upc.vwalletweb.repositories.IDetalleReservasRepository;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IDetalleReservasService;
 
@@ -20,6 +21,11 @@ public class DetalleReservaServiceImplement implements IDetalleReservasService {
     @Override
     public List<DetalleReservas> list() {
         return drR.findAll();
+    }
+
+    @Override
+    public DetalleReservas listarId(Integer idDetalleReserva) {
+        return drR.findById(idDetalleReserva).orElse(new DetalleReservas());
     }
 
     @Override

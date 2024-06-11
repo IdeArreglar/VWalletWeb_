@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.LibroDTO;
+import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
 import pe.edu.upc.vwalletweb.entities.Libro;
 import pe.edu.upc.vwalletweb.serviceinterfaces.ILibroService;
 
@@ -25,6 +26,15 @@ public class LibroController {
         Libro libro = r.map(libroDTO, Libro.class);
         lS.insert(libro);
     }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public LibroDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        LibroDTO dto = m.map(lS.listarId(id), LibroDTO.class);
+        return dto;
+    }
+
     @PutMapping()
     @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public void modificar(@RequestBody LibroDTO liDTO){

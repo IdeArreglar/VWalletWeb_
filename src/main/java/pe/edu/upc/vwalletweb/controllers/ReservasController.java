@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.ReservasDTO;
+import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
 import pe.edu.upc.vwalletweb.entities.Reservas;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IReservasService;
 
@@ -31,6 +32,15 @@ public class ReservasController {
         Reservas reser = m.map(reserDTO,Reservas.class);
         rS.insert(reser);
     }
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ReservasDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        ReservasDTO dto = m.map(rS.listarId(id), ReservasDTO.class);
+        return dto;
+    }
+
+
     @GetMapping
     @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public List<ReservasDTO> list() {

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.FechaRecargaSaldoIntervaloDTO;
 import pe.edu.upc.vwalletweb.dtos.RecargaSaldoDTO;
 import pe.edu.upc.vwalletweb.dtos.TotalRecargadoUsuarioDTO;
+import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
 import pe.edu.upc.vwalletweb.entities.RecargaSaldo;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IRecargaSalgoService;
 
@@ -28,7 +29,13 @@ public class RecargaSaldoController {
         RecargaSaldo recargasaldo = r.map(recargasaldoDTO, RecargaSaldo.class);
         rsS.insert(recargasaldo);
     }
-
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public RecargaSaldoDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        RecargaSaldoDTO dto = m.map(rsS.listarId(id), RecargaSaldoDTO.class);
+        return dto;
+    }
     @PutMapping()
     @PreAuthorize("hasAuthority('PADRE') or hasAuthority('ADMIN')")
     public void modificar(@RequestBody RecargaSaldoDTO recargasalDTO) {

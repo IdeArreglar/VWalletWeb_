@@ -32,6 +32,7 @@ public class UsuarioServiceImplement implements IUsuarioService {
 
     @Override
     public Usuario listarId(Long idUsuario) {
+
         return uR.findById(idUsuario).orElse(new Usuario());
     }
 

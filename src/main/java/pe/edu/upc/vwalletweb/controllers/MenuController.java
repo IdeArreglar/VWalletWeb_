@@ -26,6 +26,8 @@ public class MenuController {
         mS.insert(menu);
     }
 
+
+
     @PutMapping()
     @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
     public void modificar(@RequestBody MenuDTO menuDTO) {
@@ -33,6 +35,15 @@ public class MenuController {
         Menu menu = m.map(menuDTO, Menu.class);
         mS.insert(menu);
     }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public MenuDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        MenuDTO dto = m.map(mS.listarId(id), MenuDTO.class);
+        return dto;
+    }
+
 
     @GetMapping
     @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")

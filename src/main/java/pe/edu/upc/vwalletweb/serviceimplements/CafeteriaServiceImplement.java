@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.serviceimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.vwalletweb.entities.Cafeteria;
+import pe.edu.upc.vwalletweb.entities.Transporte;
 import pe.edu.upc.vwalletweb.repositories.ICafeteriaRepository;
 import pe.edu.upc.vwalletweb.serviceinterfaces.ICafeteriaService;
 
@@ -20,6 +21,11 @@ public class CafeteriaServiceImplement implements ICafeteriaService {
     @Override
     public List<Cafeteria> list() {
         return cR.findAll();
+    }
+
+    @Override
+    public Cafeteria listarId(Integer idCafeteria) {
+        return cR.findById(idCafeteria).orElse(new Cafeteria());
     }
 
     @Override

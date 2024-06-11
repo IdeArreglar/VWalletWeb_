@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.DetalleReservasDTO;
 import pe.edu.upc.vwalletweb.dtos.TotalGastoxUsuarioDTO;
+import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
 import pe.edu.upc.vwalletweb.dtos.totalViajesRealizadosPorTransporteidDTO;
 import pe.edu.upc.vwalletweb.entities.DetalleReservas;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IDetalleReservasService;
@@ -27,6 +28,15 @@ public class DetalleReservasController {
         DetalleReservas detallereservas = r.map(dreservasDTO, DetalleReservas.class);
         drS.insert(detallereservas );
     }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public DetalleReservasDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        DetalleReservasDTO dto = m.map(drS.listarId(id), DetalleReservasDTO.class);
+        return dto;
+    }
+
     @PutMapping()
     @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody DetalleReservasDTO dereservasDTO){
@@ -42,6 +52,9 @@ public class DetalleReservasController {
             return l.map(y, DetalleReservasDTO.class);
         }).collect(Collectors.toList());
     }
+
+
+
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")

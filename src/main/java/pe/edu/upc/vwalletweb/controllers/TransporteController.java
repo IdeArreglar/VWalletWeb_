@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.TotalGastoxUsuarioDTO;
 import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
 import pe.edu.upc.vwalletweb.dtos.TransportesUniversidadesDTO;
+import pe.edu.upc.vwalletweb.dtos.UsuarioDTO;
 import pe.edu.upc.vwalletweb.entities.Transporte;
 import pe.edu.upc.vwalletweb.serviceinterfaces.ITransporteService;
 
@@ -26,6 +27,14 @@ public class TransporteController {
         ModelMapper r = new ModelMapper();
         Transporte transporte = r.map(transporteDTO, Transporte.class);
         tS.insert(transporte);
+    }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public TransporteDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        TransporteDTO dto = m.map(tS.listarId(id), TransporteDTO.class);
+        return dto;
     }
 
     @PutMapping()

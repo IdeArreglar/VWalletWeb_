@@ -3,6 +3,7 @@ package pe.edu.upc.vwalletweb.serviceimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.vwalletweb.entities.Menu;
+import pe.edu.upc.vwalletweb.entities.Transporte;
 import pe.edu.upc.vwalletweb.repositories.IMenuRepository;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IMenuService;
 
@@ -21,6 +22,11 @@ public class MenuServiceImplement implements IMenuService {
     @Override
     public List<Menu> list() {
         return mR.findAll();
+    }
+
+    @Override
+    public Menu listarId(Integer idMenu) {
+        return mR.findById(idMenu).orElse(new Menu());
     }
 
     @Override
