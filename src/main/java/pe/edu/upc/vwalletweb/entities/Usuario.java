@@ -25,6 +25,7 @@ public class Usuario implements Serializable {
 
     private Boolean enabledUsuario;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id")
     private List<TypeUser> typeUsers;
