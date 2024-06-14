@@ -12,7 +12,8 @@ public class Reservas {
     private int idReservas;
     @Column(name = "fechaReserva", nullable = false)
     private LocalDate fechaReserva;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
