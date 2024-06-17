@@ -12,13 +12,15 @@ public class Reservas {
     private int idReservas;
     @Column(name = "fechaReserva", nullable = false)
     private LocalDate fechaReserva;
-
-    @ManyToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     public Reservas() {
     }
+
+
+
 
     public Reservas(int idReservas, LocalDate fechaReserva, Usuario usuario) {
         this.idReservas = idReservas;
