@@ -24,7 +24,6 @@ public class Usuario implements Serializable {
     private String emailUsuario;
 
     private Boolean enabledUsuario;
-
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id")
