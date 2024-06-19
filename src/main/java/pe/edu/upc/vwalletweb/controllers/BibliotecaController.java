@@ -60,7 +60,7 @@ public class BibliotecaController {
     }
     
     @GetMapping("/librodisponibleporsede")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public List<LibroDisponiblePorSedeDTO> librodisponibleporsede() {
         List<String[]> librosdispos = bS.LibroDisponiblePorSede();
         List<LibroDisponiblePorSedeDTO> dtoLista = new ArrayList<>();

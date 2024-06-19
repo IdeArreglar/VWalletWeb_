@@ -80,7 +80,7 @@ public class MenuController {
     }
 
     @GetMapping("/menucaros")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public List<MenusCarosDTO> menusCaros() {
         List<String[]> menusDeFilaLista = mS.menusCaros();
         List<MenusCarosDTO> dtoLista = new ArrayList<>();
@@ -94,7 +94,7 @@ public class MenuController {
     }
 
     @GetMapping("/platomaspedidos")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public List<PlatosMasPedidosDTO> platosMasPedidos() {
         List<String[]> menusDeFilaLista = mS.platosMasPedidos();
         List<PlatosMasPedidosDTO> dtoLista = new ArrayList<>();
@@ -108,7 +108,7 @@ public class MenuController {
     }
 
     @GetMapping("/economicos")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public List<MenusEconomicosDTO> menusEconomicos() {
         List<String[]> menusDeFilaLista = mS.menusEconomicos();
         List<MenusEconomicosDTO> dtoLista = new ArrayList<>();
