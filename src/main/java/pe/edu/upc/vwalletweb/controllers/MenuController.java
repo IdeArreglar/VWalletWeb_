@@ -60,20 +60,14 @@ public class MenuController {
         mS.delete(id);
     }
 
-    @GetMapping("/menudisponibleporsede")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public List<MenuDisponiblePorSedeDTO> MenuDisponiblePorSede() {
-        List<String[]> menusedefilaLista = mS.MenuDisponiblePorSede();
-        List<MenuDisponiblePorSedeDTO> dtoLista = new ArrayList<>();
+    @GetMapping("/cantidaddemenusporsede")
+    public List<CantidaddeMenusporSedeDTO> CantidaddeMenusporSede() {
+        List<String[]> menusedefilaLista = mS.CantidaddeMenusporSede();
+        List<CantidaddeMenusporSedeDTO> dtoLista = new ArrayList<>();
         for (String[] columna : menusedefilaLista) {
-            MenuDisponiblePorSedeDTO dto = new MenuDisponiblePorSedeDTO();
-          dto.setIdMenu(Integer.parseInt(columna[0]));
-          dto.setEntrada(columna[1]);
-          dto.setPlatoPrincipal(columna[2]);
-          dto.setPostre(columna[3]);
-          dto.setPrecioMenu(Float.parseFloat(columna[4]));
-          dto.setRefresco(columna[5]);
-          dto.setIdCafeteria(Integer.parseInt(columna[6]));
+            CantidaddeMenusporSedeDTO dto = new CantidaddeMenusporSedeDTO();
+          dto.setSede_cafeteria(columna[0]);
+          dto.setCantidad_menus(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;

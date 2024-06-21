@@ -75,7 +75,7 @@ public class RecargaSaldoController {
 
 
     @GetMapping("/{fInicio}/{fFin}")
-    @PreAuthorize("hasAuthority('PADRE') or hasAuthority('ADMIN')")
+
     public List<FechaRecargaSaldoIntervaloDTO> FechaRecarga(
             @PathVariable("fInicio") LocalDate fInicio,
             @PathVariable("fFin") LocalDate fFin

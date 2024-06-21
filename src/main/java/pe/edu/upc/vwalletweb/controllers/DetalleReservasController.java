@@ -63,16 +63,15 @@ public class DetalleReservasController {
     }
 
     @GetMapping("/viajesmasrealizados")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public List<totalViajesRealizadosPorTransporteidDTO> Obtenerviajesmasrealizados(){
         List<String[]> filalistaviajesmasrealizados = drS.totalViajesRealizadosPorTransporteID();
         List<totalViajesRealizadosPorTransporteidDTO> dtoLista = new ArrayList<>();
         for(String[] columna:filalistaviajesmasrealizados){
             totalViajesRealizadosPorTransporteidDTO dto = new totalViajesRealizadosPorTransporteidDTO();
-            dto.setIdTransporte(Integer.parseInt(columna[0]));
-            dto.setUniversidadSalida(columna[1]);
-            dto.setUniversidadLlegada(columna[2]);
-            dto.setTotalNumViajes(Integer.parseInt(columna[3]));
+            dto.setUniversidadSalida(columna[0]);
+            dto.setUniversidadLlegada(columna[1]);
+            dto.setTotalNumViajes(Integer.parseInt(columna[2]));
             dtoLista.add(dto);
         }
         return dtoLista;

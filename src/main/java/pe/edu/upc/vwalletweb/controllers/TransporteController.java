@@ -61,7 +61,7 @@ public class TransporteController {
     }
 
     @GetMapping("/{u_salida}/{u_llegada}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public List<TransportesUniversidadesDTO> transportesUniversidades(
             @PathVariable("u_salida") String uSalida,
             @PathVariable("u_llegada") String uLlegada
@@ -78,13 +78,13 @@ public class TransporteController {
         return dtoLista;
     }
     @GetMapping("/totalgastoxusuario")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public List<TotalGastoxUsuarioDTO> TotalGastoPorUsuario(){
         List<String[]> filalistatotalgasto = tS.totalGastoxUsuario();
         List<TotalGastoxUsuarioDTO> dtoLista = new ArrayList<>();
         for(String[] columna:filalistatotalgasto){
             TotalGastoxUsuarioDTO dto = new TotalGastoxUsuarioDTO();
-            dto.setUsuarioId(Integer.parseInt(columna[0]));
+            dto.setName_usuario(columna[0]);
             dto.setTotalGasto(Float.parseFloat(columna[1]));
             dtoLista.add(dto);
         }
