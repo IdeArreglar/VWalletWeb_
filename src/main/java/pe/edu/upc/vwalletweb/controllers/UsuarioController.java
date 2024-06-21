@@ -65,7 +65,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/nameUsuario/{nameUsuario}")
-    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN') or hasAuthority('PADRE')")
     public UsuarioDTO findByNameUsuario(@PathVariable("nameUsuario") String nameUsuario) {
         ModelMapper m = new ModelMapper();
         UsuarioDTO dto = m.map(uS.findByNameUsuario(nameUsuario), UsuarioDTO.class);

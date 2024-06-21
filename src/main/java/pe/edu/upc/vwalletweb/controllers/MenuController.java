@@ -108,7 +108,7 @@ public class MenuController {
         List<MenusEconomicosDTO> dtoLista = new ArrayList<>();
         for(String[] columna : menusDeFilaLista){
             MenusEconomicosDTO dto = new MenusEconomicosDTO();
-            dto.setIdMenu(Integer.parseInt(columna[0]));
+            dto.setPlatoPrincipal(columna[0]);
             dto.setPrecioMenu(Float.parseFloat(columna[1]));
             dtoLista.add(dto);
         }
