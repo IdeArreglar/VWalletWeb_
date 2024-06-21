@@ -66,7 +66,7 @@ public class RecargaSaldoController {
         List<TotalRecargadoUsuarioDTO> dtoLista = new ArrayList<>();
         for (String[] columna : filalistarecargatotal) {
             TotalRecargadoUsuarioDTO dto = new TotalRecargadoUsuarioDTO();
-            dto.setIdUsuario(Integer.parseInt(columna[0]));
+            dto.setName_usuario(columna[0]);
             dto.setTotal_recargado(Float.parseFloat(columna[1]));
             dtoLista.add(dto);
         }

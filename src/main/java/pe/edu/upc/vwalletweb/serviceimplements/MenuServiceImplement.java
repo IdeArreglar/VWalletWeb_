@@ -35,8 +35,8 @@ public class MenuServiceImplement implements IMenuService {
     }
 
     @Override
-    public List<String[]> MenuDisponiblePorSede() {
-        return mR.MenuDisponiblePorSede();
+    public List<String[]> CantidaddeMenusporSede() {
+        return mR.CantidaddeMenusporSede();
     }
 
     @Override

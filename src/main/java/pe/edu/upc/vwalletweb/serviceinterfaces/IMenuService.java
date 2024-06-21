@@ -13,7 +13,7 @@ public interface IMenuService {
 
     void delete(int idMenu);
 
-    List<String[]> MenuDisponiblePorSede();
+    List<String[]> CantidaddeMenusporSede();
 
     List<String[]> menusCaros();
 
