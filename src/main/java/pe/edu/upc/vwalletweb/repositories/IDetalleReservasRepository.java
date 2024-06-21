@@ -14,4 +14,6 @@ public interface IDetalleReservasRepository extends JpaRepository<DetalleReserva
             "JOIN transporte t ON dr.transporte_id = t.id_transporte\n " +
             "GROUP BY t.id_transporte, t.universidad_salida, t.universidad_llegada ", nativeQuery = true)
     List<String[]> totalViajesRealizadosPorTransporteID();
+
+
 }

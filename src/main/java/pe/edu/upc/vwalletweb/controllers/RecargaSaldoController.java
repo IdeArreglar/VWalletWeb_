@@ -23,21 +23,21 @@ public class RecargaSaldoController {
     private IRecargaSalgoService rsS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('PADRE') or hasAuthority('ADMIN')")
+
     public void registrar(@RequestBody RecargaSaldoDTO recargasaldoDTO) {
         ModelMapper r = new ModelMapper();
         RecargaSaldo recargasaldo = r.map(recargasaldoDTO, RecargaSaldo.class);
         rsS.insert(recargasaldo);
     }
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public RecargaSaldoDTO listarId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         RecargaSaldoDTO dto = m.map(rsS.listarId(id), RecargaSaldoDTO.class);
         return dto;
     }
     @PutMapping()
-    @PreAuthorize("hasAuthority('PADRE') or hasAuthority('ADMIN')")
+
     public void modificar(@RequestBody RecargaSaldoDTO recargasalDTO) {
         ModelMapper m = new ModelMapper();
         RecargaSaldo recargasal = m.map(recargasalDTO, RecargaSaldo.class);
@@ -45,7 +45,7 @@ public class RecargaSaldoController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('PADRE') or hasAuthority('ADMIN')")
+
     public List<RecargaSaldoDTO> list() {
         return rsS.list().stream().map(y -> {
             ModelMapper l = new ModelMapper();
@@ -54,13 +54,13 @@ public class RecargaSaldoController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('PADRE') or hasAuthority('ADMIN')")
+
     public void eliminar(@PathVariable("id") Integer id) {
         rsS.delete(id);
     }
 
     @GetMapping("/totalrecargado")
-    @PreAuthorize("hasAuthority('PADRE') or hasAuthority('ADMIN')")
+
     public List<TotalRecargadoUsuarioDTO> TotalRecargado() {
         List<String[]> filalistarecargatotal = rsS.TotalRecargadoUsuario();
         List<TotalRecargadoUsuarioDTO> dtoLista = new ArrayList<>();
@@ -75,7 +75,7 @@ public class RecargaSaldoController {
 
 
     @GetMapping("/{fInicio}/{fFin}")
-    @PreAuthorize("hasAuthority('PADRE') or hasAuthority('ADMIN')")
+
     public List<FechaRecargaSaldoIntervaloDTO> FechaRecarga(
             @PathVariable("fInicio") LocalDate fInicio,
             @PathVariable("fFin") LocalDate fFin

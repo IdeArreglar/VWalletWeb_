@@ -53,7 +53,20 @@ public class DetalleReservasController {
         }).collect(Collectors.toList());
     }
 
-
+    @GetMapping("/usuario/{id}")
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
+    public List<DetalleReservasDTO> listdetallebyuser(@PathVariable("id") long id) {
+        List<DetalleReservas> resultado = new ArrayList<>();
+        for (DetalleReservas detalle : drS.list()) {
+            if (detalle.getReservas().getUsuario().getIdUsuario().equals(id)) {
+                resultado.add(detalle);
+            }
+        }
+        return resultado.stream().map(y -> {
+            ModelMapper l = new ModelMapper();
+            return l.map(y, DetalleReservasDTO.class);
+        }).collect(Collectors.toList());
+    }
 
 
     @DeleteMapping("/{id}")

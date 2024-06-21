@@ -24,8 +24,7 @@ public class UsuarioController {
     private IUsuarioService uS;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/registranuevo")
     public void registrar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
@@ -35,7 +34,7 @@ public class UsuarioController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public void modificar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
@@ -43,26 +42,34 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public void eliminar(@PathVariable("id") Long id) {
         uS.delete(id);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     public UsuarioDTO listarId(@PathVariable("id") Long id) {
         ModelMapper m = new ModelMapper();
         UsuarioDTO dto = m.map(uS.listarId(id), UsuarioDTO.class);
         return dto;
     }
 
-    @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/list")
+
     public List<UsuarioDTO> listar() {
         return uS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, UsuarioDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/nameUsuario/{nameUsuario}")
+    @PreAuthorize("hasAuthority('ESTUDIANTE') or hasAuthority('ADMIN')")
+    public UsuarioDTO findByNameUsuario(@PathVariable("nameUsuario") String nameUsuario) {
+        ModelMapper m = new ModelMapper();
+        UsuarioDTO dto = m.map(uS.findByNameUsuario(nameUsuario), UsuarioDTO.class);
+        return dto;
     }
 
 

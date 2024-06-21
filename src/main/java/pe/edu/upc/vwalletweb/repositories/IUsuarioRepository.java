@@ -15,6 +15,8 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Long> {
 
     public Usuario findByNameUsuario(String nameUsuario);
 
+    public Usuario findByIdUsuario (long idUsuario);
+
     //BUSCAR POR NOMBRE
     @Query("select count(u.nameUsuario) from Usuario u where u.nameUsuario =:nameUsuario")
     public int buscarNameUsuario(@Param("nameUsuario") String nombre);

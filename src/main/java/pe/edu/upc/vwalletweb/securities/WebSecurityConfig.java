@@ -63,6 +63,8 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
                         .requestMatchers(antMatcher("/login")).permitAll()
+                        .requestMatchers(antMatcher("/usuarios/registranuevo")).permitAll()
+                        .requestMatchers(antMatcher("/usuarios/list")).permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
@@ -72,5 +74,8 @@ public class WebSecurityConfig {
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
+
+
+
 
 }
