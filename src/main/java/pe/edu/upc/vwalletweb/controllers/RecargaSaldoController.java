@@ -60,13 +60,13 @@ public class RecargaSaldoController {
     }
 
     @GetMapping("/totalrecargado")
-    @PreAuthorize("hasAuthority('PADRE') or hasAuthority('ADMIN')")
+
     public List<TotalRecargadoUsuarioDTO> TotalRecargado() {
         List<String[]> filalistarecargatotal = rsS.TotalRecargadoUsuario();
         List<TotalRecargadoUsuarioDTO> dtoLista = new ArrayList<>();
         for (String[] columna : filalistarecargatotal) {
             TotalRecargadoUsuarioDTO dto = new TotalRecargadoUsuarioDTO();
-            dto.setIdUsuario(Integer.parseInt(columna[0]));
+            dto.setName_usuario(columna[0]);
             dto.setTotal_recargado(Float.parseFloat(columna[1]));
             dtoLista.add(dto);
         }

@@ -11,11 +11,10 @@ import java.util.List;
 @Repository
 public interface IRecargaSaldoRepository extends JpaRepository<RecargaSaldo, Integer> {
     //Query 1
-    @Query(value = """
-            SELECT usuario_id, SUM(monto_recarga) AS total_recargado\s
-            FROM recargasaldo\s
-            GROUP BY usuario_id;\s
-            """, nativeQuery = true)
+    @Query(value = "SELECT u.name_usuario, SUM(monto_recarga) AS total_recargado\n " +
+            "FROM recargasaldo r\n " +
+            "JOIN usuario u ON u.id_usuario = r.usuario_id\n " +
+            "GROUP BY u.name_usuario ", nativeQuery = true)
     List<String[]> TotalRecargadoUsuario();
 
     //Query 9

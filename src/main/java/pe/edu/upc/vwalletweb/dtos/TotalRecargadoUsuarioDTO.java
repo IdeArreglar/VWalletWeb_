@@ -1,15 +1,15 @@
 package pe.edu.upc.vwalletweb.dtos;
 
 public class TotalRecargadoUsuarioDTO {
-    private int idUsuario;
+    private String name_usuario;
     private float total_recargado;
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public String getName_usuario() {
+        return name_usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setName_usuario(String name_usuario) {
+        this.name_usuario = name_usuario;
     }
 
     public float getTotal_recargado() {
