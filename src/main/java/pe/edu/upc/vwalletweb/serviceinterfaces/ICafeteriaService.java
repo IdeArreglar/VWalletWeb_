@@ -13,4 +13,5 @@ public interface ICafeteriaService {
     public Cafeteria listarId(Integer idCafeteria);
 
     public void delete(int idCafeteria);
+    List<String[]> PromedioPreciosDeMenuXCafeteria();
 }

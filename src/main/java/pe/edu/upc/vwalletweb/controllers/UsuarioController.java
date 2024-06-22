@@ -41,11 +41,10 @@ public class UsuarioController {
         uS.insert(u);
     }
 
-    @DeleteMapping("/{id}")
-
-    public void eliminar(@PathVariable("id") Long id) {
-        uS.delete(id);
-    }
+    //@DeleteMapping("/{id}")
+    //public void eliminar(@PathVariable("id") Long id) {
+        //uS.delete(id);
+    //}
 
     @GetMapping("/{id}")
 

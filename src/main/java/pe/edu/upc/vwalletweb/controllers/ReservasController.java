@@ -4,11 +4,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.vwalletweb.dtos.CantidadReservasXUsuarioDTO;
 import pe.edu.upc.vwalletweb.dtos.ReservasDTO;
+import pe.edu.upc.vwalletweb.dtos.TotalGastoxUsuarioDTO;
 import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
 import pe.edu.upc.vwalletweb.entities.Reservas;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IReservasService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,5 +57,19 @@ public class ReservasController {
 
     public void eliminar(@PathVariable("id") Integer id){
         rS.delete(id);
+    }
+
+
+    @GetMapping("/cantidadreservasxusuario")
+    public List<CantidadReservasXUsuarioDTO> CantidadDeReservasXUsuarios(){
+        List<String[]> filalistatotalgasto = rS.CantidadReservasXUsuario();
+        List<CantidadReservasXUsuarioDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filalistatotalgasto){
+            CantidadReservasXUsuarioDTO dto = new CantidadReservasXUsuarioDTO();
+            dto.setName_usuario(columna[0]);
+            dto.setTotal_reservas(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 }

@@ -33,4 +33,9 @@ public class ReservasServiceImplement implements IReservasService {
     public void delete(int idReservas) {
         rR.deleteById(idReservas);
     }
+
+    @Override
+    public List<String[]> CantidadReservasXUsuario() {
+        return rR.CantidadReservasXUsuario();
+    }
 }

@@ -32,4 +32,9 @@ public class CafeteriaServiceImplement implements ICafeteriaService {
     public void delete(int idCafeteria) {
         cR.deleteById(idCafeteria);
     }
+
+    @Override
+    public List<String[]> PromedioPreciosDeMenuXCafeteria() {
+        return cR.PromedioPreciosDeMenuXCafeteria();
+    }
 }

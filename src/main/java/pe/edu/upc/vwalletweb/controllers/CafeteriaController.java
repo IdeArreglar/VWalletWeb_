@@ -5,10 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.vwalletweb.dtos.CafeteriaDTO;
+import pe.edu.upc.vwalletweb.dtos.CantidadReservasXUsuarioDTO;
+import pe.edu.upc.vwalletweb.dtos.PromedioPreciosDeMenuXCafeteriaDTO;
 import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
 import pe.edu.upc.vwalletweb.entities.Cafeteria;
 import pe.edu.upc.vwalletweb.serviceinterfaces.ICafeteriaService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,5 +55,19 @@ public class CafeteriaController {
     @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         cS.delete(id);
+    }
+
+
+    @GetMapping("/promediopreciosdemenuxcafeteria")
+    public List<PromedioPreciosDeMenuXCafeteriaDTO> PromediosDePreciosDeMenuXCafeterias(){
+        List<String[]> filalistatotalgasto = cS.PromedioPreciosDeMenuXCafeteria();
+        List<PromedioPreciosDeMenuXCafeteriaDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filalistatotalgasto){
+            PromedioPreciosDeMenuXCafeteriaDTO dto = new PromedioPreciosDeMenuXCafeteriaDTO();
+            dto.setSede_cafeteria(columna[0]);
+            dto.setPrecio_promedio(Float.parseFloat(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 }
