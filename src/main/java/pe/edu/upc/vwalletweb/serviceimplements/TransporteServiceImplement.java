@@ -43,4 +43,9 @@ public class TransporteServiceImplement implements ITransporteService {
     public List<String[]> totalGastoxUsuario() {
         return tR.totalGastoxUsuario();
     }
+
+    @Override
+    public List<String[]> CantUsuario() {
+        return tR.CantUsuario();
+    }
 }

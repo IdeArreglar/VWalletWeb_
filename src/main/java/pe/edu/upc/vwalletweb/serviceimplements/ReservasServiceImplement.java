@@ -38,4 +38,9 @@ public class ReservasServiceImplement implements IReservasService {
     public List<String[]> CantidadReservasXUsuario() {
         return rR.CantidadReservasXUsuario();
     }
+
+    @Override
+    public List<String[]> CantidadReservasXUsuario2() {
+        return rR.CantidadReservasXUsuario2();
+    }
 }

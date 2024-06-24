@@ -18,4 +18,8 @@ public interface IRecargaSalgoService {
 
     List<String[]> FechaRecargaSaldoIntervalo(LocalDate fInicio, LocalDate fFin);
 
+    List<String[]> CantMenuLentejas(String platoprincipal);
+
+    List<String[]> ViajeElegir(String universidadsalida, String universidadllegada);
+
 }

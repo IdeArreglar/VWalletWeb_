@@ -26,4 +26,9 @@ public interface ITransporteRepository extends JpaRepository<Transporte, Integer
             "JOIN usuario u ON r.usuario_id = u.id_usuario\n " +
             "GROUP BY u.name_usuario ", nativeQuery = true)
     List<String[]> totalGastoxUsuario();
+
+    @Query(value = "SELECT u.name_usuario , COUNT (u.id_usuario) AS CANTIDAD\n " +
+            "FROM usuario u\n " +
+            "GROUP BY u.name_usuario " , nativeQuery = true)
+    List<String[]> CantUsuario();
 }

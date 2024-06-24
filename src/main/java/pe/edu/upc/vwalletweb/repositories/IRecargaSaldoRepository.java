@@ -24,4 +24,17 @@ public interface IRecargaSaldoRepository extends JpaRepository<RecargaSaldo, Int
             BETWEEN :fInicio AND :fFin \s
             """, nativeQuery = true)
     List<String[]> FechaRecargaSaldoIntervalo(LocalDate fInicio, LocalDate fFin);
+
+   @Query(value = "SELECT COUNT(*) AS platolentejas \n " +
+           "FROM menu m\n " +
+           "WHERE plato_principal= :platoprincipal\n " , nativeQuery = true)
+   List<String[]> CantMenuLentejas(String platoprincipal);
+
+   @Query(value = "SELECT t.universidad_salida, t.universidad_llegada, COUNT(*) AS num_viajes\n " +
+           "FROM detallereservas dr\n " +
+           "JOIN transporte t ON dr.transporte_id = t.id_transporte\n " +
+           "WHERE universidad_salida = :universidadsalida\n " +
+           "AND universidad_llegada= :universidadllegada\n " +
+           "GROUP BY  t.universidad_salida, t.universidad_llegada ", nativeQuery = true)
+   List<String[]> ViajeElegir(String universidadsalida, String universidadllegada);
 }

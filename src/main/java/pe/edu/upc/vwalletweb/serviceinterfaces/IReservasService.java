@@ -16,4 +16,6 @@ public interface IReservasService {
     public void delete(int idReservas);
 
     List<String[]> CantidadReservasXUsuario();
+
+    List<String[]> CantidadReservasXUsuario2();
 }

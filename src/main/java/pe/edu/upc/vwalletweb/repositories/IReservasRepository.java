@@ -15,4 +15,8 @@ public interface IReservasRepository extends JpaRepository<Reservas,Integer> {
             "JOIN usuario u ON u.id_usuario = r.usuario_id\n " +
             "GROUP BY u.name_usuario; ", nativeQuery = true)
     List<String[]> CantidadReservasXUsuario();
+
+    @Query(value = "SELECT COUNT(*) AS total_reservas\n " +
+            "FROM reservas r ", nativeQuery = true)
+    List<String[]> CantidadReservasXUsuario2();
 }

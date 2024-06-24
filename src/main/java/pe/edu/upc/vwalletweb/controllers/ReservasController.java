@@ -4,10 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.vwalletweb.dtos.CantidadReservasXUsuarioDTO;
-import pe.edu.upc.vwalletweb.dtos.ReservasDTO;
-import pe.edu.upc.vwalletweb.dtos.TotalGastoxUsuarioDTO;
-import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
+import pe.edu.upc.vwalletweb.dtos.*;
 import pe.edu.upc.vwalletweb.entities.Reservas;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IReservasService;
 
@@ -68,6 +65,19 @@ public class ReservasController {
             CantidadReservasXUsuarioDTO dto = new CantidadReservasXUsuarioDTO();
             dto.setName_usuario(columna[0]);
             dto.setTotal_reservas(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/cantidad2")
+    public List<cantidadDTO> CantidadDeReservasXUsuarios2(){
+        List<String[]> filalistatotalgasto = rS.CantidadReservasXUsuario2();
+        List<cantidadDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filalistatotalgasto){
+            cantidadDTO dto = new cantidadDTO();
+            dto.setCantidad(Integer.parseInt(columna[0]));
+
             dtoLista.add(dto);
         }
         return dtoLista;

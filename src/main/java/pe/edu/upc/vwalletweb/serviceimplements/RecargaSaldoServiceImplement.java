@@ -45,4 +45,16 @@ public class RecargaSaldoServiceImplement implements IRecargaSalgoService {
 
         return rsR.FechaRecargaSaldoIntervalo(fInicio, fFin);
     }
+
+   @Override
+   public List<String[]> CantMenuLentejas(String platoprincipal) {
+       return rsR.CantMenuLentejas(platoprincipal);
+   }
+
+    @Override
+    public List<String[]> ViajeElegir(String universidadsalida, String universidadllegada) {
+        return rsR.ViajeElegir(universidadsalida,universidadllegada);
+    }
+
+
 }

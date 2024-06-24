@@ -15,4 +15,6 @@ public interface ITransporteService {
 
     List<String[]> transportesUniversidades(String uSalida, String uLlegada);
     List<String[]> totalGastoxUsuario();
+
+    List<String[]> CantUsuario();
 }

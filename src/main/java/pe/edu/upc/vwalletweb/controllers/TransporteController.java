@@ -4,10 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.vwalletweb.dtos.TotalGastoxUsuarioDTO;
-import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
-import pe.edu.upc.vwalletweb.dtos.TransportesUniversidadesDTO;
-import pe.edu.upc.vwalletweb.dtos.UsuarioDTO;
+import pe.edu.upc.vwalletweb.dtos.*;
 import pe.edu.upc.vwalletweb.entities.Transporte;
 import pe.edu.upc.vwalletweb.serviceinterfaces.ITransporteService;
 
@@ -90,4 +87,18 @@ public class TransporteController {
         }
         return dtoLista;
     }
+
+    @GetMapping("/cantidad")
+    public List<cantidadusuariosDTO> CantidadUsuarios_(){
+        List<String[]> filalistatotalgasto = tS.CantUsuario();
+        List<cantidadusuariosDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filalistatotalgasto){
+            cantidadusuariosDTO dto = new cantidadusuariosDTO();
+            dto.setName_usuario(columna[0]);
+            dto.setCantidad(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
 }

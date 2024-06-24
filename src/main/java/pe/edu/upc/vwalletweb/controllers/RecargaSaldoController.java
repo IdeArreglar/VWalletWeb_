@@ -4,10 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.vwalletweb.dtos.FechaRecargaSaldoIntervaloDTO;
-import pe.edu.upc.vwalletweb.dtos.RecargaSaldoDTO;
-import pe.edu.upc.vwalletweb.dtos.TotalRecargadoUsuarioDTO;
-import pe.edu.upc.vwalletweb.dtos.TransporteDTO;
+import pe.edu.upc.vwalletweb.dtos.*;
 import pe.edu.upc.vwalletweb.entities.RecargaSaldo;
 import pe.edu.upc.vwalletweb.serviceinterfaces.IRecargaSalgoService;
 
@@ -29,13 +26,13 @@ public class RecargaSaldoController {
         RecargaSaldo recargasaldo = r.map(recargasaldoDTO, RecargaSaldo.class);
         rsS.insert(recargasaldo);
     }
-    @GetMapping("/{id}")
+   @GetMapping("/{id}")
 
-    public RecargaSaldoDTO listarId(@PathVariable("id") Integer id) {
-        ModelMapper m = new ModelMapper();
-        RecargaSaldoDTO dto = m.map(rsS.listarId(id), RecargaSaldoDTO.class);
-        return dto;
-    }
+   public RecargaSaldoDTO listarId(@PathVariable("id") Integer id) {
+       ModelMapper m = new ModelMapper();
+       RecargaSaldoDTO dto = m.map(rsS.listarId(id), RecargaSaldoDTO.class);
+       return dto;
+   }
     @PutMapping()
 
     public void modificar(@RequestBody RecargaSaldoDTO recargasalDTO) {
@@ -88,6 +85,38 @@ public class RecargaSaldoController {
             dto.setFechaRecarga(LocalDate.parse(columna[1]));
             dto.setMontorecarga(Float.parseFloat(columna[2]));
             dto.setIdUsuario(Integer.parseInt(columna[3]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+   @GetMapping("/elegir/{platoprincipal}")
+   public List<cantmenulentejasDTO> cantidadmenulentejastotal(
+           @PathVariable("platoprincipal") String platoprincipal
+   ) {
+       List<String[]> filalistafecharecarga = rsS.CantMenuLentejas(platoprincipal);
+       List<cantmenulentejasDTO> dtoLista = new ArrayList<>();
+       for (String[] columna : filalistafecharecarga) {
+           cantmenulentejasDTO dto = new cantmenulentejasDTO();
+           dto.setPlatolentejas(Integer.parseInt(columna[0]));
+           dtoLista.add(dto);
+       }
+       return dtoLista;
+   }
+
+    @GetMapping("/opcion/{universidadsalida}/{universidadllegada}")
+
+    public List<viajeelegirDTO> viajeelegirmetodo(
+            @PathVariable("universidadsalida") String universidadsalida,
+            @PathVariable("universidadllegada") String universidadllegada
+    ) {
+        List<String[]> filalistafecharecarga = rsS.ViajeElegir(universidadsalida, universidadllegada);
+        List<viajeelegirDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filalistafecharecarga) {
+            viajeelegirDTO dto = new viajeelegirDTO();
+            dto.setUniversidad_salida(columna[0]);
+            dto.setUniversidad_llegada(columna[1]);
+            dto.setNum_viajes(Integer.parseInt(columna[2]));
             dtoLista.add(dto);
         }
         return dtoLista;
