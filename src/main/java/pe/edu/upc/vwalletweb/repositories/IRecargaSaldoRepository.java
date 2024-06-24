@@ -15,6 +15,8 @@ public interface IRecargaSaldoRepository extends JpaRepository<RecargaSaldo, Int
             "FROM recargasaldo r\n " +
             "JOIN usuario u ON u.id_usuario = r.usuario_id\n " +
             "GROUP BY u.name_usuario ", nativeQuery = true)
+   //WHERE universidad_salida = 'San Miguel'
+   //AND universidad_llegada= 'Monterrico'
     List<String[]> TotalRecargadoUsuario();
 
     //Query 9
